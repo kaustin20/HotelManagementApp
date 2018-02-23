@@ -9,8 +9,12 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+//DO NOT MODIFY THE CouchbaseSingleton.java file WHILE LEARNING HOW TO USE THE DATABASE!
+
 public class CouchbaseSingleton {
 
+
+    
     private Manager manager;
     private Database database;
     private Replication pushReplication;

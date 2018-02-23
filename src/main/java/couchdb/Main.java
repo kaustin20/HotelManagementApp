@@ -8,9 +8,12 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 
+//DO NOT MODIFY THE CouchbaseSingleton.java file WHILE LEARNING HOW TO USE THE DATABASE!
+
 public class Main extends Application
 {
-
+    //use this Main.java file for a test bed when writing your database code
+    
     CouchbaseSingleton couchbase;
 
     @Override
@@ -19,7 +22,11 @@ public class Main extends Application
         System.out.println("STARTING THE APPLICATION...");
 
         this.couchbase = CouchbaseSingleton.getInstance();
+        //couchbase sync gateway is currently not setup, do not modify
 //        this.couchbase.startReplication(new URL("http://localhost:4984/fx-example/"), true);
+
+        //do not delete or aplication will hang
+        System.exit(0);
     }
 
     @Override
