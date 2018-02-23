@@ -16,3 +16,4 @@
 All merge requests will be denied if you have changed anything outside of your teams package. If you run into an issue with another team's package, please submit an issue on github for that corresponding team. </p>
 
 
+Happy Coding :) !
