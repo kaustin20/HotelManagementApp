@@ -1,6 +1,5 @@
 <h1>Hotel Management App<h1>
-
-<h4>This is the new Hotel Management App repository setup with couchdb.<h4>
+<h4>This is the new Hotel Management App repository setup with couchdb.</h4>
 
 <ul>
 	It is split up into 3 packages: 
