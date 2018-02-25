@@ -11,7 +11,8 @@ import java.util.Map;
 
 //DO NOT MODIFY THE CouchbaseSingleton.java file WHILE LEARNING HOW TO USE THE DATABASE!
 
-public class CouchbaseSingleton {
+public class CouchbaseSingleton
+{
 
 
     
@@ -25,8 +26,9 @@ public class CouchbaseSingleton {
     private CouchbaseSingleton() {
         try {
             this.manager = new Manager(new JavaContext("data"), Manager.DEFAULT_OPTIONS);
-            this.database = this.manager.getDatabase("fx-project");
-            View todoView = database.getView("todos");
+
+            this.database = this.manager.getDatabase("reservationsystemdb");
+            View todoView = database.getView("rooms");
             todoView.setMap(new Mapper() {
                 @Override
                 public void map(Map<String, Object> document, Emitter emitter) {
