@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.HashMap;
 
 //DO NOT MODIFY THE CouchbaseSingleton.java file WHILE LEARNING HOW TO USE THE DATABASE!
 
@@ -22,8 +23,25 @@ public class Main extends Application
         System.out.println("STARTING THE APPLICATION...");
 
         this.couchbase = CouchbaseSingleton.getInstance();
+
         //couchbase sync gateway is currently not setup, do not modify
 //        this.couchbase.startReplication(new URL("http://localhost:4984/fx-example/"), true);
+
+
+        HashMap<Integer, Object> obj1 = new HashMap<>();
+
+
+        obj1.put(624983748, "Chris Rock");
+        obj1.put(624354783, "Sam Goodwen");
+
+//        System.out.println("obj: "+obj1.get(624983748));
+
+        System.out.println(obj1);
+
+
+
+
+
 
         //do not delete or aplication will hang
         System.exit(0);
@@ -35,6 +53,7 @@ public class Main extends Application
         this.couchbase.stopReplication();
     }
 
+   //ignore main function, requirement for javafx
     public static void main(String[] args) {
         launch(args);
     }

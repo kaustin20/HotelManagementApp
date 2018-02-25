@@ -8,10 +8,12 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
-public class MainApp extends Application {
+public class MainApp extends Application
+{
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) throws Exception
+    {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/ReservationSystemUI.fxml"));
         
          Scene scene = new Scene(root,463,544);
@@ -21,6 +23,12 @@ public class MainApp extends Application {
          stage.setTitle(FirstKotlinKt.speakKotlin("JavaFX & Kotlin!"));
          stage.setScene(scene);
          stage.show();
+
+
+         if("624".equals("624297369".substring(0,2)))
+         {
+
+         }
 
     }
 
@@ -35,5 +43,10 @@ public class MainApp extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
+
+
+
+
 
 }
