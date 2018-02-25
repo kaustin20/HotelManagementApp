@@ -41,15 +41,11 @@ public class Main extends Application
 
 
 
-        HashMap<Integer, Object> obj1 = new HashMap<>();
 
-
-        obj1.put(624983748, "Chris Rock");
-        obj1.put(624354783, "Sam Goodwen");
 
 //        System.out.println("obj: "+obj1.get(624983748));
 
-        System.out.println(obj1);
+
 
         //rooms (
 
