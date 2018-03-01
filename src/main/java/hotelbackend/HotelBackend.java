@@ -73,7 +73,7 @@ public class HotelBackend {
 
         
         /*
-        
+        kkk
 Make it so that each room type can be compared with the UI 
     1. if RoomTypeConst is set to HANDI the compare 
     2. else if RoomTypeConst is set to REG the compare
