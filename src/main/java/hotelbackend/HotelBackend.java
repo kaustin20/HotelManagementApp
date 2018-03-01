@@ -30,6 +30,7 @@ public class HotelBackend
          logic.getCalenderForDay(239484, Integer.toString(t));
         logic.getMemberID("63273435");
 
+
 //         logic.getCalenderForDay(0, "NoDay");
 //         logic.getCalenderForDay(4999, "fuckIt");
 //
@@ -256,11 +257,30 @@ Make it so that each room type can be compared with the UI
 
     public void getMemberID(String memberID)
     {
+        HashMap<String, Object> rewardsProgram = new HashMap<String, Object>();
+        rewardsProgram.put("photoURL", "fhwebfb");
+        rewardsProgram.put("date", "fhwebfb");
+        rewardsProgram.put("dayOfWeek", "fhwebfb");
 
-        HashMap<String, Integer> nightStay = new HashMap<String, Integer>();
-        nightStay.put("NightStayed", 1);
-        System.out.println(nightStay);
-        JSONObject json = new JSONObject(nightStay);
+
+
+
+        HashMap<String, Object> rewardsMembers = new HashMap<String, Object>();
+        HashMap<String, Object> rewardsMember = new HashMap<String, Object>();
+        rewardsMember.put("nightStayed", 1);
+        rewardsMember.put("memberID", "632234354");
+        rewardsMember.put("memberLevel", "Gold");
+        rewardsMember.put("memberName", "Sam Smith");
+
+        System.out.println(rewardsMember);
+        rewardsMembers.put("632234354", rewardsMember);
+        System.out.println(rewardsMembers);
+
+        rewardsProgram.put("rewardsMembers",rewardsMember);
+        System.out.print(rewardsProgram);
+
+        JSONObject json = new JSONObject(rewardsProgram);
+        System.out.println("\n\n\n\n " + json.toString(10) );
         int nightStayed = 0;
 
         if (memberID.startsWith("632"))
