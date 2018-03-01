@@ -160,7 +160,7 @@ public class ReservationSystemUIController implements Initializable
          ObservableList<Integer> maxNumOfRooms = FXCollections.observableArrayList(1,2,3,4,5);
 
         numOfBookedRoomsComboBox.setItems(maxNumOfRooms);
-    };
+    }
 
 
 
