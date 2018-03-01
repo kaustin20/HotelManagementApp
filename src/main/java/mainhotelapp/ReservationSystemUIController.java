@@ -6,7 +6,11 @@
 package mainhotelapp;
 
 
-import mainhotelapp.SysConstants.RoomTypeConst;
+
+
+
+
+import couchdb.Room.roomType;
 import hotelbackend.HotelBackend;
 import hotelbackend.Sqllc;
 import java.net.URL;
@@ -39,7 +43,7 @@ public class ReservationSystemUIController implements Initializable
     private DatePicker toBookingDatePicker;
 
     @FXML
-    private ComboBox<RoomTypeConst> roomBookingTypeComboBox;
+    private ComboBox<String> roomBookingTypeComboBox;
 
     @FXML
     private ComboBox<Integer> numOfBookedRoomsComboBox;
@@ -68,109 +72,106 @@ public class ReservationSystemUIController implements Initializable
     @FXML
     private TableColumn<?, ?> roomActionColumn;
 
-    
+
     /*
         Steps to get basic booking functionality working
-    
+
     1) input room types for the roomBookingTypeComboBox: "King, Queen"
     2) input number of rooms for the numOfBookedRoomsComboBox
-    3) make search button clickListener check that the input is valid and not blank for input boxes: 
+    3) make search button clickListener check that the input is valid and not blank for input boxes:
         - fromBookingDatePicker
         - toBookingDatePicker
         - roomBookingTypeComboBox
         - numOfBookedRoomsComboBox
-        
-        1) if the input fields are invalid, show a toolTip besides the box that is currently invalid with 
+
+        1) if the input fields are invalid, show a toolTip besides the box that is currently invalid with
             a message of how to correct the issue.
         2) if the input field is valid, query the database with the given request params
-    
-        
-    
+
+
+
     */
-    
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
          calenderResultsWebView.getEngine().load("http://google.com");
-         
+
          setupRoomBookingComboBox();
          setupNumOfBookedRoomsComboBox();
-         
-         
-         
-        
-        
-    }
-    
-    @FXML
-    void onBarClicked(MouseEvent event) 
-    {
-         
+
+
+
+
+
     }
 
     @FXML
-    void onClickedCalender(MouseEvent event) 
+    void onBarClicked(MouseEvent event)
     {
 
     }
 
     @FXML
-    void onClickedSearchBtn(MouseEvent event) throws Exception 
+    void onClickedCalender(MouseEvent event)
     {
-        
+
+    }
+
+    @FXML
+    void onClickedSearchBtn(MouseEvent event) throws Exception
+    {
+
             //param1: LocalDate, param2: LocalDate
             System.out.println("from date: "+fromBookingDatePicker.getValue());
             System.out.println("from date: "+toBookingDatePicker.getValue());
             System.out.println("roomType: "+roomBookingTypeComboBox.getSelectionModel().getSelectedItem());
             System.out.println("num of selected rooms: "+numOfBookedRoomsComboBox.getValue());
+
             
             HotelBackend myHotelRoom = new HotelBackend();
+
+
+//            HotelRoom myHotelRoom = new HotelRoom(); //need updated backend code
+
             LocalDate fromDate = fromBookingDatePicker.getValue();
             LocalDate toDate = fromBookingDatePicker.getValue();
-            RoomTypeConst roomType = roomBookingTypeComboBox.getSelectionModel().getSelectedItem();
+//            RoomTypeConst roomType = roomBookingTypeComboBox.getSelectionModel().getSelectedItem(); //need updated backend code
             int numOfBookedRooms = numOfBookedRoomsComboBox.getValue();
 
-            myHotelRoom.bookRoom(fromDate, toDate, roomType, numOfBookedRooms);
-            
-            Sqllc s = new Sqllc();
+//            myHotelRoom.bookRoom(fromDate, toDate, roomType, numOfBookedRooms); //need updated backend code
+
+
         System.out.println("verify print");
-        int temproomnummber = 102;
-            s.insertCID(2, 3, 4);
-            s.insertCOD(2, 3, 4);
-            s.insertRoom(temproomnummber, "Suite");
-            s.getCheckInDay(2, 3, 4);
-            s.getCheckInMonth(2, 3, 4);
-            s.getCheckInYear(2, 3, 4);
-            s.getCheckOutMonth(2, 3, 4);
-            s.getCheckOutYear(2, 3, 4);
-            s.getRoomType( temproomnummber);
-            
-            
+
+
+
+
 
     }
 
-    private void setupRoomBookingComboBox() 
+    private void setupRoomBookingComboBox()
     {
         //instantiate combobox for roomTypeSelection
-         ObservableList<RoomTypeConst> roomTypes = FXCollections.observableArrayList(
-        RoomTypeConst.REG,
-        RoomTypeConst.SUITE,
-        RoomTypeConst.HANDI
+         ObservableList<String> roomTypes = FXCollections.observableArrayList(
+        roomType.reg.toString(),
+        roomType.suite.toString(),
+        roomType.handi.toString()
     );
-         
+
          roomBookingTypeComboBox.setItems(roomTypes);
-         
+
     }
 
-    private void setupNumOfBookedRoomsComboBox() 
+    private void setupNumOfBookedRoomsComboBox()
     {
-        
-         ObservableList<Integer> maxNumOfRooms = FXCollections.observableArrayList(1,2,3,4,5);
-        
-        numOfBookedRoomsComboBox.setItems(maxNumOfRooms);
-    };
 
-    
+         ObservableList<Integer> maxNumOfRooms = FXCollections.observableArrayList(1,2,3,4,5);
+
+        numOfBookedRoomsComboBox.setItems(maxNumOfRooms);
+    }
+
+
 
 }
 

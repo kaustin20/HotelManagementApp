@@ -7,7 +7,7 @@ package hotelbackend;
 
 import mainhotelapp.SysConstants;
 import java.time.LocalDate;
-import mainhotelapp.SysConstants.RoomTypeConst;
+import couchdb.Room.roomType;
 import java.util.*;
 import org.json.*;
 /**
@@ -46,7 +46,7 @@ public class HotelBackend
     }
 
 
-    public void bookRoom(LocalDate fromDate, LocalDate toDate, SysConstants.RoomTypeConst roomType, int numOfRooms) throws Exception {
+    public void bookRoom(LocalDate fromDate, LocalDate toDate, roomType roomType, int numOfRooms) throws Exception {
         
         String myRoomType = "";
         int temproomnummber = (int) (Math.random());
@@ -62,17 +62,17 @@ Make it so that each room type can be compared with the UI
 
          */
         //if RoomType is set to HANDI then compare to the roomType
-        if (RoomTypeConst.HANDI == roomType) {//
+        if (roomType.handi == roomType) {//
             //if it succededs then print out the room type that was just compared
             System.out.print("HANDI");
             myRoomType = "HANDI";
         } //else if RoomType is set to REG then compare to the roomType
-        else if (RoomTypeConst.REG == roomType) {
+        else if (roomType.reg == roomType) {
             //if it succededs then print out the room type that was just compared
             System.out.print("REG");            
             myRoomType = "REG";
         } //else if RoomType is set to SUITE then compare to the roomType
-        else if (RoomTypeConst.SUITE == roomType) {
+        else if (roomType.suite == roomType) {
             //if it succededs then print out the room type that was just compared
             System.out.print("SUITE");            
             myRoomType = "SUITE";
