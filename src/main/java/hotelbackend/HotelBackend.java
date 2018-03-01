@@ -5,31 +5,37 @@
  */
 package hotelbackend;
 
+import couchdb.CouchbaseSingleton;
+import couchdb.Room;
 import mainhotelapp.SysConstants;
+
 import java.time.LocalDate;
+
 import couchdb.Room.roomType;
+
 import java.util.*;
+
 import org.json.*;
+
+import java.lang.*;
+
 /**
- *
  * @author kyleaustin
  */
-public class HotelBackend
-{
+public class HotelBackend {
 
     /**
      * @param args the command line arguments
      */
     public static int myNum = 0;
     public int myNum2 = 0;
-    
-    public static void main(String[] args) throws Exception 
-    {
-         HotelBackend logic = new HotelBackend();
-        int t = 5;
-         logic.getCalenderForDay(239484, Integer.toString(t));
-        logic.getMemberID("63273435");
 
+    public static void main(String[] args) throws Exception {
+        HotelBackend logic = new HotelBackend();
+        int t = 5;
+        //logic.getCalenderForDay(239484, Integer.toString(t));
+        //logic.getMemberID("63273435");
+        logic.bookRoom(LocalDate.now(), LocalDate.now(), roomType.reg, 5);
 
 //         logic.getCalenderForDay(0, "NoDay");
 //         logic.getCalenderForDay(4999, "fuckIt");
@@ -40,17 +46,31 @@ public class HotelBackend
 //        logic.getMembershipType(-32);
 
 
-
-
-
     }
 
 
-    public void bookRoom(LocalDate fromDate, LocalDate toDate, roomType roomType, int numOfRooms) throws Exception {
-        
+    public ArrayList<Object> bookRoom(LocalDate fromDate, LocalDate toDate, roomType roomType, int numOfRooms) throws Exception {
+
         String myRoomType = "";
         int temproomnummber = (int) (Math.random());
         System.out.println(temproomnummber);
+
+
+        Room db = new Room();
+        HashMap<String, Object> rooms = db.getRooms();
+
+        ArrayList roomList = new ArrayList<Object>();
+
+        roomList.add(rooms.get("1"));
+        roomList.add(rooms.get("2"));
+        roomList.add(rooms.get("3"));
+        roomList.add(rooms.get("4"));
+        roomList.add(rooms.get("5"));
+
+
+
+
+
         
         /*
         
@@ -69,38 +89,36 @@ Make it so that each room type can be compared with the UI
         } //else if RoomType is set to REG then compare to the roomType
         else if (roomType.reg == roomType) {
             //if it succededs then print out the room type that was just compared
-            System.out.print("REG");            
+            System.out.print("REG");
             myRoomType = "REG";
         } //else if RoomType is set to SUITE then compare to the roomType
         else if (roomType.suite == roomType) {
             //if it succededs then print out the room type that was just compared
-            System.out.print("SUITE");            
+            System.out.print("SUITE");
             myRoomType = "SUITE";
         } else {
             //else send error 
-            System.out.print("Error");            
+            System.out.print("Error");
         }
-        
-        if (numOfRooms == 1 && numOfRooms <= 5)
-        {
+
+        if (numOfRooms == 1 && numOfRooms <= 5) {
             fromDate.getDayOfMonth();
             fromDate.getMonthValue();
             fromDate.getYear();
-            
+
             toDate.getDayOfMonth();
             toDate.getMonthValue();
             toDate.getYear();
 
             //call database with params and get callback
-            
+
             Sqllc s = new Sqllc();
-            
+
             s.insertCID(fromDate.getDayOfMonth(), fromDate.getMonthValue(), fromDate.getYear());
             s.insertCOD(toDate.getDayOfMonth(), toDate.getMonthValue(), toDate.getYear());
             s.insertRoom(temproomnummber, myRoomType);
-            
-            
-            
+
+
             System.out.print(s.getCheckInDay(fromDate.getDayOfMonth(), fromDate.getMonthValue(), fromDate.getYear()));
             System.out.print(s.getCheckInMonth(fromDate.getDayOfMonth(), fromDate.getMonthValue(), fromDate.getYear()));
             System.out.print(s.getCheckInYear(fromDate.getDayOfMonth(), fromDate.getMonthValue(), fromDate.getYear()));
@@ -108,8 +126,8 @@ Make it so that each room type can be compared with the UI
             System.out.print(s.getCheckOutMonth(fromDate.getDayOfMonth(), fromDate.getMonthValue(), fromDate.getYear()));
             System.out.print(s.getCheckOutYear(fromDate.getDayOfMonth(), fromDate.getMonthValue(), fromDate.getYear()));
             System.out.print(s.getRoomType(temproomnummber));
-            
-            
+
+
         } else {
             System.out.println("Error");
         }
@@ -121,7 +139,8 @@ Make it so that each room type can be compared with the UI
             2. else send error to user 
         4. send result data to data base 
          */
-        
+        return roomList;
+
     }
 
     /**
@@ -139,23 +158,18 @@ Make it so that each room type can be compared with the UI
     }
 
 
+    public void getCalenderForDay(int daynum, String dayOfWeek) {
 
-    public void getCalenderForDay(int daynum, String dayOfWeek)
-    {
-
-        if (daynum >= 1 && daynum <= 31)
-        {
+        if (daynum >= 1 && daynum <= 31) {
             //add date, change to println
             System.out.println("Valid date " + daynum);
 
         }//
-        else
-        {
+        else {
             //add date, change to println
             //return;
             System.out.println("not valid date");
         }
-
 
 
         //move to system constants create a enum of string constants, google for support if not understood
@@ -175,42 +189,34 @@ Make it so that each room type can be compared with the UI
 
         //if day of the week is equal to the string "Monday" print out today is Monday
 
-        if (mon.equals(dayOfWeek))
-        {
+        if (mon.equals(dayOfWeek)) {
 
             System.out.println("To day is " + mon);
         }
         //else if day of the week is equal to the string "Tuesday" print out today is Tuesday
-        else if (tues.equals(dayOfWeek))
-        {
+        else if (tues.equals(dayOfWeek)) {
             System.out.println("To day is " + tues);
         }
         //else if day of the week is equal to the string "Wednesday" print out today is Wednesday
-        else if (wed.equals(dayOfWeek))
-        {
+        else if (wed.equals(dayOfWeek)) {
             System.out.println("To day is " + wed);
         }
         //else if day of the week is equal to the string "Thursday" print out today is Thursday
-        else if (thur.equals(dayOfWeek))
-        {
+        else if (thur.equals(dayOfWeek)) {
             System.out.println("To day is " + thur);
         }
         //else if day of the week is equal to the string "Friday" print out today is Friday
-        else if (fri.equals(dayOfWeek))
-        {
+        else if (fri.equals(dayOfWeek)) {
             System.out.println("To day is " + fri);
         }
         //else if day of the week is equal to the string "Saturday" print out today is Saturday
-        else if (sat.equals(dayOfWeek))
-        {
+        else if (sat.equals(dayOfWeek)) {
             System.out.println("To day is " + sat);
         }
         //else if day of the week is equal to the string "Sunday" print out today is Sunday
-        else if (sun.equals(dayOfWeek))
-        {
+        else if (sun.equals(dayOfWeek)) {
             System.out.println("To day is " + sun);
-        }
-        else{
+        } else {
 
             return;
         }
@@ -222,32 +228,27 @@ Make it so that each room type can be compared with the UI
 
     {
         // if the number of is stays is greater than or equal to 3 month person is platinum member
-        if(stayCount >=90)
-        {
+        if (stayCount >= 90) {
             System.out.println("you are a Platinum member ");
 
         }
         // if the number of stays is greater than or equal to 2 months && is less then or equal to 3 months  person is Gold member
-        else if(stayCount >= 60 && stayCount <=90)
-        {
+        else if (stayCount >= 60 && stayCount <= 90) {
             System.out.println("you are a Gold member ");
 
         }
         //  if the number of stays is greater than or equal to 1 month && is less then or equal to 2 months  person is Silver member
-        else if(stayCount >=30  && stayCount <=60)
-        {
+        else if (stayCount >= 30 && stayCount <= 60) {
             System.out.println("you are a Silver member ");
 
         }
         //  if the number of stays is greater than or equal to 2 weeks && is less then or equal to 1 month  person is Bronze member
-        else if(stayCount >= 14 && stayCount <=30)
-        {
+        else if (stayCount >= 14 && stayCount <= 30) {
             System.out.println("your are a Bronze member");
 
         }
         //else you havent stayed long enouh to earn a membership
-        else
-            {
+        else {
 
             System.out.println("you dont have a memebrship");
         }
@@ -255,14 +256,11 @@ Make it so that each room type can be compared with the UI
 
     }
 
-    public void getMemberID(String memberID)
-    {
+    public void getMemberID(String memberID) {
         HashMap<String, Object> rewardsProgram = new HashMap<String, Object>();
         rewardsProgram.put("photoURL", "fhwebfb");
         rewardsProgram.put("date", "fhwebfb");
         rewardsProgram.put("dayOfWeek", "fhwebfb");
-
-
 
 
         HashMap<String, Object> rewardsMembers = new HashMap<String, Object>();
@@ -276,25 +274,21 @@ Make it so that each room type can be compared with the UI
         rewardsMembers.put("632234354", rewardsMember);
         System.out.println(rewardsMembers);
 
-        rewardsProgram.put("rewardsMembers",rewardsMember);
+        rewardsProgram.put("rewardsMembers", rewardsMember);
         System.out.print(rewardsProgram);
 
         JSONObject json = new JSONObject(rewardsProgram);
-        System.out.println("\n\n\n\n " + json.toString(10) );
+        System.out.println("\n\n\n\n " + json.toString(10));
         int nightStayed = 0;
 
-        if (memberID.startsWith("632"))
-        {
+        if (memberID.startsWith("632")) {
             System.out.println("Member ID is valid ");
             //nightStay++;
 
-        }
-        else
-        {
+        } else {
             System.out.println("This ID is not valid");
         }
     }
-
 
 
 }
