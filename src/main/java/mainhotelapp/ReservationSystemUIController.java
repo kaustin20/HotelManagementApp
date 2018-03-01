@@ -7,7 +7,7 @@ package mainhotelapp;
 
 
 import mainhotelapp.SysConstants.RoomTypeConst;
-import hotelbackend.HotelRoom;
+import hotelbackend.HotelBackend;
 import hotelbackend.Sqllc;
 import java.net.URL;
 import java.time.LocalDate;
@@ -124,7 +124,7 @@ public class ReservationSystemUIController implements Initializable
             System.out.println("roomType: "+roomBookingTypeComboBox.getSelectionModel().getSelectedItem());
             System.out.println("num of selected rooms: "+numOfBookedRoomsComboBox.getValue());
             
-            HotelRoom myHotelRoom = new HotelRoom();
+            HotelBackend myHotelRoom = new HotelBackend();
             LocalDate fromDate = fromBookingDatePicker.getValue();
             LocalDate toDate = fromBookingDatePicker.getValue();
             RoomTypeConst roomType = roomBookingTypeComboBox.getSelectionModel().getSelectedItem();
