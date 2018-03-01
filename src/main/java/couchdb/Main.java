@@ -26,7 +26,7 @@ import org.json.*;
 public class Main extends Application
 {
     //use this Main.java file for a test bed when writing your database code
-    
+
     CouchbaseSingleton couchbase;
 
     @Override
@@ -99,12 +99,14 @@ public class Main extends Application
         }
 
         JSONObject json = new JSONObject(roomsObj); // Convert text to object
+        System.out.println(json.toString(10));
+
         //create Document in database MAKE SURE YOU GET THE CORRECT Document type (com.couchdb)
 
-//        Document roomsObjDoc = this.couchbase.getDatabase().createDocument();
+        Document roomsObjDoc = this.couchbase.getDatabase().createDocument();
 //        roomsObjDoc.putProperties(roomsObj);
-//        System.out.println("ID: "+roomsObjDoc.getId());
-        System.out.println(json);
+        System.out.println("ID: "+roomsObjDoc.getId());
+
 
 
 //        System.out.println(json.toString(10)); // Print it with specified indentation
@@ -125,7 +127,7 @@ public class Main extends Application
         this.couchbase.stopReplication();
     }
 
-   //ignore main function, requirement for javafx
+    //ignore main function, requirement for javafx
     public static void main(String[] args) {
         launch(args);
     }
