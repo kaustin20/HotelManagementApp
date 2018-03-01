@@ -99,10 +99,12 @@ public class Main extends Application
         }
 
         JSONObject json = new JSONObject(roomsObj); // Convert text to object
+        System.out.println(json.toString(10));
+
         //create Document in database MAKE SURE YOU GET THE CORRECT Document type (com.couchdb)
 
         Document roomsObjDoc = this.couchbase.getDatabase().createDocument();
-        roomsObjDoc.putProperties(roomsObj);
+//        roomsObjDoc.putProperties(roomsObj);
         System.out.println("ID: "+roomsObjDoc.getId());
 
 
