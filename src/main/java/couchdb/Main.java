@@ -26,7 +26,7 @@ import org.json.*;
 public class Main extends Application
 {
     //use this Main.java file for a test bed when writing your database code
-    
+
     CouchbaseSingleton couchbase;
 
     @Override
@@ -127,7 +127,7 @@ public class Main extends Application
         this.couchbase.stopReplication();
     }
 
-   //ignore main function, requirement for javafx
+    //ignore main function, requirement for javafx
     public static void main(String[] args) {
         launch(args);
     }

@@ -6,8 +6,12 @@
 package mainhotelapp;
 
 
+
+
+
+
 import couchdb.Room.roomType;
-//import hotelbackend. //need updated backend code
+import hotelbackend.HotelBackend;
 import hotelbackend.Sqllc;
 import java.net.URL;
 import java.time.LocalDate;
@@ -124,7 +128,12 @@ public class ReservationSystemUIController implements Initializable
             System.out.println("roomType: "+roomBookingTypeComboBox.getSelectionModel().getSelectedItem());
             System.out.println("num of selected rooms: "+numOfBookedRoomsComboBox.getValue());
 
+            
+            HotelBackend myHotelRoom = new HotelBackend();
+
+
 //            HotelRoom myHotelRoom = new HotelRoom(); //need updated backend code
+
             LocalDate fromDate = fromBookingDatePicker.getValue();
             LocalDate toDate = fromBookingDatePicker.getValue();
 //            RoomTypeConst roomType = roomBookingTypeComboBox.getSelectionModel().getSelectedItem(); //need updated backend code
