@@ -2,20 +2,26 @@ package couchdb;
 
 import java.util.HashMap;
 
-public class Room
-{
+public class Room {
+    static String roomNumber;
 
 
-    private Room()
-    {
+
+    private Room() {
+
     }
 
+
     //HashMap keys
-     static final String bedTypeKey = "bedType";
+    static final String bedTypeKey = "bedType";
     static final String roomTypeKey = "roomType";
     static final String isSmokingKey = "isSmoking";
     static final String petKey = "hasPet";
     static final String amenitiesKey = "amenities";
+
+    public static enum typeKey{
+        bedType,roomType,isSmoking,hasPet,amenities;
+    }
 
 
     public static enum roomType {
@@ -35,12 +41,11 @@ public class Room
     }
 
 
-     static final HashMap<String, Boolean> regAmenities = getRegAmenities();
-     static final HashMap<String, Boolean> suiteAmenities = getSuiteAmenities();
+    static final HashMap<String, Boolean> regAmenities = getRegAmenities();
+    static final HashMap<String, Boolean> suiteAmenities = getSuiteAmenities();
 
 
-    private static final HashMap<String, Boolean> getRegAmenities()
-    {
+    private static final HashMap<String, Boolean> getRegAmenities() {
 
         HashMap<String, Boolean> regRoomAmenities = new HashMap<String, Boolean>();
 
@@ -52,25 +57,30 @@ public class Room
         regRoomAmenities.put(amenities.iron.toString(), true);
         regRoomAmenities.put(amenities.safe.toString(), true);
 
-        return  regRoomAmenities;
+        return regRoomAmenities;
     }
 
-    private static HashMap<String, Boolean> getSuiteAmenities()
-    {
-         HashMap<String, Boolean> suiteRoomAmenities = Room.regAmenities;
+    private static HashMap<String, Boolean> getSuiteAmenities() {
+        HashMap<String, Boolean> suiteRoomAmenities = Room.regAmenities;
 
         suiteRoomAmenities.put(amenities.cofferMaker.toString(), true);
         suiteRoomAmenities.put(amenities.stereo.toString(), true);
         suiteRoomAmenities.put(amenities.miniBar.toString(), true);
 
-         return  suiteRoomAmenities;
+        return suiteRoomAmenities;
     }
 
     public static enum amenities {
         fridge, microwave, couch, telephone, iron, safe, cofferMaker, stereo, miniBar
 
     }
+    public  static String getRoomNumValue (){
+        return roomNumber;
+    }
 
+    public static void setRoomNumValue(String roomNum){
+        roomNumber = roomNum;
+    }
 
 }
 
