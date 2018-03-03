@@ -10,9 +10,16 @@ import javafx.stage.Stage;
 import mainhotelapp.SysConstants;
 ;
 import java.net.URL;
-import java.util.*;
+
+import java.util.HashMap;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.json.*;
+
 
 
 //DO NOT MODIFY THE CouchbaseSingleton.java file WHILE LEARNING HOW TO USE THE DATABASE!
@@ -28,10 +35,12 @@ public class Main extends Application {
         System.out.println("STARTING THE APPLICATION...");
 
         this.couchbase = CouchbaseSingleton.getInstance();
+
         //couchbase sync gateway is currently not setup, do not modify
 //        this.couchbase.startReplication(new URL("http://localhost:4984/fx-example/"), true);
 
-        //rooms (
+
+//        System.out.println("obj: "+obj1.get(624983748));
 
 
 //        couchbase.getDatabase() ;// ask norris about ... This is simply the function to retrieve the database, should not have written this
@@ -82,10 +91,14 @@ public class Main extends Application {
         }
 
         JSONObject json = new JSONObject(roomsObj); // Convert text to object
+        System.out.println(json.toString(10));
+
         //create Document in database MAKE SURE YOU GET THE CORRECT Document type (com.couchdb)
 
         Document roomsObjDoc = this.couchbase.getDatabase().createDocument();
+
         roomsObjDoc.putProperties(roomsObj);
+
 
 
         //System.out.println("ID: "+roomsObjDoc.getId());
@@ -177,6 +190,11 @@ public class Main extends Application {
         roomsObjDoc.putProperties(roomsObj);
 
 
+
+
+        //do not delete or aplication will hang
+        System.exit(0);
+
     }
 
     @Override
@@ -186,6 +204,7 @@ public class Main extends Application {
 
     }
 
+    //ignore main function, requirement for javafx
     public static void main(String[] args) {
 
         launch(args);
