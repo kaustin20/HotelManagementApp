@@ -22,7 +22,8 @@ import java.lang.*;
 /**
  * @author kyleaustin
  */
-public class HotelBackend {
+public class HotelBackend
+{
 
     /**
      * @param args the command line arguments
@@ -32,10 +33,14 @@ public class HotelBackend {
 
     public static void main(String[] args) throws Exception {
         HotelBackend logic = new HotelBackend();
-        int t = 5;
-        //logic.getCalenderForDay(239484, Integer.toString(t));
-        //logic.getMemberID("63273435");
-        logic.bookRoom(LocalDate.now(), LocalDate.now(), roomType.reg, 5);
+       int t = 5;
+       // logic.getCalenderForDay(239484, Integer.toString(t));
+        logic.getMemberID("624123435");
+        logic.getMemberID("62423435");
+        logic.getMemberID("62463435");
+        logic.getMemberID("62543535");
+//        logic.getMemberID("62423435");
+        //logic.bookRoom(LocalDate.now(), LocalDate.now(), roomType.reg, 5);
 
 //         logic.getCalenderForDay(0, "NoDay");
 //         logic.getCalenderForDay(4999, "fuckIt");
@@ -256,13 +261,24 @@ Make it so that each room type can be compared with the UI
 
     }
 
-    public void getMemberID(String memberID) {
-        HashMap<String, Object> rewardsProgram = new HashMap<String, Object>();
+    public void getMemberID(String memberID)
+     {
+        /*
+        * hash Map of Key type string and value type object
+        *that breaks down the membership
+        * */
+         HashMap<String, Object> rewardsProgram = new HashMap<String, Object>();
         rewardsProgram.put("photoURL", "fhwebfb");
         rewardsProgram.put("date", "fhwebfb");
         rewardsProgram.put("dayOfWeek", "fhwebfb");
 
-
+        /*
+        *  A nested
+        *  the first HashMap of key type string and value type object holds a group of memeber
+        *  the second HashMap of key type string and value type object holds a single member.
+        *
+        *
+        * */
         HashMap<String, Object> rewardsMembers = new HashMap<String, Object>();
         HashMap<String, Object> rewardsMember = new HashMap<String, Object>();
         rewardsMember.put("nightStayed", 1);
@@ -270,25 +286,134 @@ Make it so that each room type can be compared with the UI
         rewardsMember.put("memberLevel", "Gold");
         rewardsMember.put("memberName", "Sam Smith");
 
-        System.out.println(rewardsMember);
+//        System.out.println(rewardsMember);
         rewardsMembers.put("632234354", rewardsMember);
-        System.out.println(rewardsMembers);
+//        System.out.println(rewardsMembers);
 
         rewardsProgram.put("rewardsMembers", rewardsMember);
-        System.out.print(rewardsProgram);
+//        System.out.print(rewardsProgram);
 
         JSONObject json = new JSONObject(rewardsProgram);
-        System.out.println("\n\n\n\n " + json.toString(10));
-        int nightStayed = 0;
+//        System.out.println("\n\n\n\n " + json.toString(10));
 
-        if (memberID.startsWith("632")) {
-            System.out.println("Member ID is valid ");
-            //nightStay++;
+         int nightStayed = 0;
 
-        } else {
-            System.out.println("This ID is not valid");
+
+         String memberLocation = "Member is located in ";
+         char regionID = memberID.charAt(3);
+
+        /*
+        * if  memberID starts with the 3 digit character string of 624 then the ID is valid
+        * */
+            String reg = "region " ;
+         if (memberID.startsWith("624"))
+         {
+             System.out.println("Member ID is valid ");
+         }
+        /*
+        *  while the memberID starts with the string value of 624 implement the following logic to check for the regionID
+        *  If regionID 1-7 then return one of th following 7 regional locations:
+        *  Southwest
+        *  Northwest
+        *  Southcentral
+        *  Northcentral
+        *  Northeast
+        *  Southeast
+        *
+        *  else the MemberID is not valid
+        * */
+       while(memberID.startsWith("624"))
+        {
+            if(regionID == '1')
+            {
+                System.out.println(memberLocation + " Southwest " + reg);
+                return;
+            }
+            else if(regionID == '2')
+            {
+                System.out.println(memberLocation + " Northwest " + reg);
+                return;
+            }
+            else if(regionID == '3')
+            {
+                System.out.println(memberLocation + " SouthCentral " + reg);
+                return;
+            }
+            else if(regionID == '4')
+            {
+                System.out.println(memberLocation + " NorthCentral " + reg);
+                return;
+            }
+            else if(regionID == '5')
+            {
+                System.out.println(memberLocation + " NorthEast " + reg);
+                return;
+            }
+            else if(regionID == '6')
+            {
+                System.out.println(memberLocation + " SouthEast " + reg);
+                return;
+            }
+            else if(regionID == '7')
+            {
+                System.out.println(memberLocation + " Alaska" );
+                return;
+            }
+            else if(regionID == '8')
+            {
+                System.out.println(memberLocation + " Pacific Islands");
+                return;
+            }
+            else
+            {
+
+                System.out.println("Person has no region");
+            }
+
         }
-    }
 
+
+
+
+     }
+
+   /* public void int memberRegion (int region)
+    {
+
+        /*if(regionID == '1')
+         {
+             System.out.println(memberLocation + " Southwest");
+         }
+         else if(regionID == '2')
+         {
+             System.out.println(memberLocation + " Northwest");
+         }
+         else if(regionID == '3')
+         {
+             System.out.println(memberLocation + " SouthCentral");
+         }
+         else if(regionID == '4')
+         {
+             System.out.println(memberLocation + " NorthCentral");
+         }
+         else if(regionID == '5')
+         {
+             System.out.println(memberLocation + " NorthEast");
+         }
+         else if(regionID == '6')
+         {
+             System.out.println(memberLocation + " SouthEast");
+         }
+         else if(regionID == '7')
+         {
+             System.out.println(memberLocation + " Alaska");
+         }
+         else
+        {
+            System.out.println("Person has no region");
+        }
+
+
+    }*/
 
 }
