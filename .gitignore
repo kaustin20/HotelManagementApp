@@ -1,8 +1,13 @@
 /data
 /target
 /.DS_Store
-/.idea/vcs.xml
+/.idea/
+/.idea/workspace.xml
+/.idea/.DS_Store
+/src/main/resources/.DS_Store
+
+
+
+/.idea
 /src/.idea/
 /src/main/java/.DS_Store
-
-
