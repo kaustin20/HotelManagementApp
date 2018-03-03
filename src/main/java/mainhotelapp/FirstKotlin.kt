@@ -15,7 +15,7 @@ fun speakKotlin(statement: String) : String
 
 //------------------- Building UI
 
-class MyApp : App(MyView1::class)
+
 
 
 class MyView1 : View()
@@ -59,11 +59,11 @@ class MyController: Controller()
 }
 
 
-
-fun main(args: Array<String>)
-{
-    Application.launch(MyApp::class.java, *args)
-}
+//class MyApp : App(MyView1::class)
+//fun main(args: Array<String>)
+//{
+//    Application.launch(MyApp::class.java, *args)
+//}
 
 
 

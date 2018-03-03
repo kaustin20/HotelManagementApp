@@ -22,7 +22,8 @@ import java.lang.*;
 /**
  * @author kyleaustin
  */
-public class HotelBackend {
+public class HotelBackend
+{
 
     /**
      * @param args the command line arguments
