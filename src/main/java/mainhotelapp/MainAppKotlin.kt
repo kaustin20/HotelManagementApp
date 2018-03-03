@@ -6,24 +6,99 @@ import javafx.scene.layout.*
 import javafx.collections.FXCollections
 import hotelbackend.HotelBackend
 import tornadofx.*;
+import java.util.*
 
 
 
-class ReservationSystemUI : View()
+
+class ReservationView : View()
 {
-    override val root : VBox by fxml("/fxml/ReservationSystemUI.fxml")
 
+    override val root = vbox{
 
-}
-
-
+     hbox{
 
 
 
-class MainAppKotlin : App(ReservationSystemUI::class)
+             button("Home"){
+                    action{
+
+                        println("Presenting 1 ")
+                    }
+
+
+            }
+             button("Reservation System"){
+                 action{
+
+                     println("Presenting 2")
+                 }
+
+
+             }
+             button("Rewards System"){
+                 action{
+
+                     println("Presenting 3")
+                 }
+             }
+         button("Home"){
+             action{
+
+                 println("Presenting 1 ")
+             }
+
+
+         }
+         button("Reservation System"){
+             action{
+
+                 println("Presenting 2")
+             }
+
+
+         }
+         button("Rewards System"){
+             action{
+
+                 println("Presenting 3")
+             }
+         }
+
+         }
+
+
+        hbox {
+                webview{
+                    engine.load("http://google.com")
+
+                }
+
+
+
+        }
+     }
+
+
+
+ }
+
+
+
+
+
+
+
+
+
+
+
+class MainAppKotlin : App(ReservationView::class)
 
 fun main(args: Array<String>)
 {
 
     Application.launch(MainAppKotlin::class.java, *args)
+
+
 }

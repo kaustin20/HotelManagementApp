@@ -40,14 +40,7 @@ public class Main extends Application
 //        this.couchbase.startReplication(new URL("http://localhost:4984/fx-example/"), true);
 
 
-
-
-
 //        System.out.println("obj: "+obj1.get(624983748));
-
-
-
-        //rooms (
 
 //        couchbase.getDatabase() ;// ask norris about ... This is simply the function to retrieve the database, should not have written this
 

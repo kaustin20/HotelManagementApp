@@ -1,15 +1,16 @@
 
 /data
 /target
+
 /.DS_Store
-/.idea/
-/.idea/workspace.xml
 /.idea/.DS_Store
+/src/.DS_Store
+/src/main/.DS_Store
+/src/main/java/.DS_Store
 /src/main/resources/.DS_Store
-
-
+hotelapp.iml
 
 /.idea
-/src/.idea/
-/src/main/java/.DS_Store
+/src/.idea
+
 
