@@ -4,12 +4,14 @@ import java.util.HashMap;
 
 public class Room {
     static String roomNumber;
-
+    static String Key;
 
 
     private Room() {
 
     }
+
+
 
 
     //HashMap keys
@@ -19,8 +21,8 @@ public class Room {
     static final String petKey = "hasPet";
     static final String amenitiesKey = "amenities";
 
-    public static enum typeKey{
-        bedType,roomType,isSmoking,hasPet,amenities;
+    public static enum typeKey {
+        bedType, roomType, isSmoking, hasPet, amenities;
     }
 
 
@@ -74,13 +76,23 @@ public class Room {
         fridge, microwave, couch, telephone, iron, safe, cofferMaker, stereo, miniBar
 
     }
-    public  static String getRoomNumValue (){
+
+    public static String getRoomNumValue() {
         return roomNumber;
     }
 
-    public static void setRoomNumValue(String roomNum){
+    public static void setRoomNumValue(String roomNum) {
         roomNumber = roomNum;
     }
+
+    public getRoomTypeKey() {
+
+    if(){
+        //update the value for hasPet, change to use (using enum)
+        oneRoom.put(Room.petKey.toString(), Room.hasPet.yes.toString());
+    }
+}
+
 
 }
 

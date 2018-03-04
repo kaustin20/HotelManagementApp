@@ -2,6 +2,7 @@ package couchdb;
 
 
 import com.couchbase.lite.*;
+import com.sun.scenario.effect.impl.prism.PrRenderInfo;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -28,14 +29,74 @@ public class Main extends Application {
         System.out.println("STARTING THE APPLICATION...");
 
         this.couchbase = CouchbaseSingleton.getInstance();
+
         //couchbase sync gateway is currently not setup, do not modify
 //        this.couchbase.startReplication(new URL("http://localhost:4984/fx-example/"), true);
 
-        //rooms (
 
 
-//        couchbase.getDatabase() ;// ask norris about ... This is simply the function to retrieve the database, should not have written this
 
+        updateAmenitiesForRoom("110", "hasPet", "no");
+        updateAmenitiesForRoom("110", "microwave", false);
+        updateAmenitiesForRoom("110", "hasPet", "no");
+        updateAmenitiesForRoom("110", "hasPet", "no");
+        updateAmenitiesForRoom("110", "hasPet", "no");updateAmenitiesForRoom("110", "hasPet", "no");
+
+
+
+        //do not delete or aplication will hang, USED FOR TESTING
+        System.exit(0);
+
+
+    }
+
+
+
+
+    //functoin is not usable, developing test cases...
+    public void queryDatebase()
+    {
+        /* Query query1 = this.couchbase.getDatabase().getView("roomObjView1").createQuery();
+        query1.setDescending(true);
+        List<String> sl = new ArrayList<String>();
+        sl.add("1");
+        sl.add("2");
+        //query1.setKeys();
+        query1.setLimit(20);
+       //System.out.println(roomObjView1.getTotalRows());
+        QueryEnumerator result = query1.run();*/
+
+        //roomsObjDoc.getProperties("hasPet");
+     /*   Document doc = roomsObjDoc;
+        Map<String,Object> properties = new HashMap<String, Object>() ;
+        properties = ("Yes",roomsObj.get("hasPet"))
+        properties.put( ,roomsObj.get("110"));
+        properties.put("yes",);
+        System.out.println(room);
+
+
+    }
+
+    public void mapperUpdateAndIndex()
+    {
+        /* View roomObjView1 = this.couchbase.getDatabase().getView("rooms");
+        roomObjView1.setMap(new Mapper() {
+            @Override
+            public void map(Map<String, Object> roomsObjDoc, Emitter emitter) {
+                for(int i=1; i<201; i++){
+                    emitter.emit("i",roomsObjDoc.get("roomObj"));
+                }
+
+                    //emitter.emit("110", roomsObjDoc.get("hasPet"));
+
+            }
+        }, "1");*/
+    }
+
+
+
+    public void createRooms() throws Exception
+    {
         //create an object of multiple rooms
         HashMap<String, Object> roomsObj = new HashMap<>(); //track all rooms of HashMap (Object)
 
@@ -86,97 +147,7 @@ public class Main extends Application {
 
         Document roomsObjDoc = this.couchbase.getDatabase().createDocument();
         roomsObjDoc.putProperties(roomsObj);
-
-
-        //System.out.println("ID: "+roomsObjDoc.getId());
-//        System.out.println(json.toString(10)); // Print it with specified indentation
-       /* View roomObjView1 = this.couchbase.getDatabase().getView("rooms");
-        roomObjView1.setMap(new Mapper() {
-            @Override
-            public void map(Map<String, Object> roomsObjDoc, Emitter emitter) {
-                for(int i=1; i<201; i++){
-                    emitter.emit("i",roomsObjDoc.get("roomObj"));
-                }
-
-                    //emitter.emit("110", roomsObjDoc.get("hasPet"));
-
-            }
-        }, "1");*/
-
-
-        // System.out.println(this.couchbase.getDatabase().getDocument(roomsObjDoc.getId()));
-        System.out.println(json.toString(10)); // Print it with specified indentation
-
-       /* Query query1 = this.couchbase.getDatabase().getView("roomObjView1").createQuery();
-        query1.setDescending(true);
-        List<String> sl = new ArrayList<String>();
-        sl.add("1");
-        sl.add("2");
-        //query1.setKeys();
-        query1.setLimit(20);
-       //System.out.println(roomObjView1.getTotalRows());
-        QueryEnumerator result = query1.run();*/
-
-        //roomsObjDoc.getProperties("hasPet");
-     /*   Document doc = roomsObjDoc;
-        Map<String,Object> properties = new HashMap<String, Object>() ;
-        properties = ("Yes",roomsObj.get("hasPet"))
-        properties.put( ,roomsObj.get("110"));
-        properties.put("yes",);
-        System.out.println(room);
-
-        //do not delete or aplication will hang
-        System.exit(0);*/
-        // Database db = couchbase.getDatabase().getDocument(roomsObjDoc);
-        //Document doc =couchbase.getDatabase()getDocument(roomsObj);
-        //Document doc = roomsObjDoc;
-
-
-        roomsObjDoc.update(new Document.DocumentUpdater(){
-            // Overwrite physically replaces the object thats in the database
-            @Override
-            public boolean update(UnsavedRevision newRevision) {
-
-
-                //get doc from database, store in a HashMap
-                Map<String, Object> roomsDocFromDb = newRevision.getProperties();
-
-                //get a room out of the rooms HashMap
-                HashMap<String, Object> oneRoom = (HashMap<String, Object>) roomsDocFromDb.get("110");
-
-                //update the value for hasPet, change to use (using enum)
-                oneRoom.put(Room.petKey.toString(), Room.hasPet.yes.toString());
-
-                //place the room we updated hasPet value for, back into the rooms HashMap
-                roomsDocFromDb.put(Room.getRoomNumValue(), oneRoom);
-
-                //print the JSON version of the HashMap
-                JSONObject json = new JSONObject(roomsDocFromDb); // Convert text to object
-                System.out.println("FROM UPDATE: \n\n\n" + json.toString(10)); // Print it with specified indentation
-
-
-                //save the updated version of the roomsDocFromDb HashMap into the Database
-                newRevision.setUserProperties(roomsDocFromDb);
-
-
-                System.exit(0);
-                return true;
-
-            }
-        }
-        );
-
-        //HashMap<String, Object> oneRoom = (HashMap<String, Object>) roomsObj.get("110");
-        //System.out.println(json.toString(10)); // Print it with specified indentation
-//        Object genericObj = roomsObj.get("110");
-//        HashMap<String, Object> oneRoom = (HashMap<String, Object>) genericObj;
-        //System.out.println(roomsObj.get(("hasPet")+roomsObj.get("110")));
-        //create Document in database MAKE SURE YOU GET THE CORRECT Document type (com.couchdb)
-//        Document roomsObjDoc = this.couchbase.getDatabase().createDocument();
-
         roomsObjDoc.putProperties(roomsObj);
-
-
     }
 
     @Override
@@ -190,4 +161,63 @@ public class Main extends Application {
 
         launch(args);
     }
+
+
+    //to update the amernities for room...if availablity changes for an amenity, we will pass
+    //in the room number, amenity to update, and the new value for that amenity
+    //amenity is type: string, value is: type (multiple types)
+    public void updateAmenitiesForRoom(String roomNumber, String amenity, Object newValue) throws Exception
+    {
+
+        //create Document in database MAKE SURE YOU GET THE CORRECT Document type (com.couchdb)
+        Document roomsObjDoc = this.couchbase.getDatabase();
+//        View d =  roomsObjDoc.getDatabase().getView("System");
+
+
+
+        roomsObjDoc.update(new Document.DocumentUpdater(){
+            // Overwrite physically replaces the object thats in the database
+            @Override
+            public boolean update(UnsavedRevision newRevision)
+            {
+
+
+                //get doc from database, store in a HashMap
+                Map<String, Object> roomsDocFromDb = newRevision.getProperties();
+
+                //get a room out of the rooms HashMap
+                HashMap<String, Object> oneRoom = (HashMap<String, Object>) roomsDocFromDb.get(roomNumber);
+
+
+                //update the value for cooresponding amenitiy, change to use (using enum)
+                oneRoom.put(amenity, newValue);
+
+
+                //place the room we updated hasPet value for, back into the rooms HashMap
+                roomsDocFromDb.put(Room.getRoomNumValue(), oneRoom);
+
+
+
+
+                //save the updated version of the roomsDocFromDb HashMap into the Database
+                newRevision.setUserProperties(roomsDocFromDb);
+
+
+                System.exit(0);
+                return true;
+
+            }
+        });
+
+    }
+
+
+    public void printDatabase(HashMap<String, Object> currentHashMap)
+    {
+        //print the JSON version of the HashMap
+        JSONObject json = new JSONObject(currentHashMap); // Convert text to object
+        System.out.println("FROM PRINT FUNCTION: \n\n\n" + json.toString(10)); // Print it with specified indentation
+    }
+
+
 }
