@@ -16,9 +16,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="699.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="699.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox fx:id="navBtnBar" maxHeight="100.0" maxWidth="1.7976931348623157E308" prefHeight="73.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
+      <HBox fx:id="navBtnBar" maxHeight="100.0" maxWidth="1.7976931348623157E308" onMouseClicked="#onBarClicked" prefHeight="73.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
          <children>
             <Button ellipsisString="~" maxHeight="1.7976931348623157E308" maxWidth="560.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="73.0" prefWidth="71.0" style="-fx-background-color: linear-gradient(#286487 0%, #5886A1 100%);" text="Home" textFill="WHITE" HBox.hgrow="ALWAYS">
                <font>
@@ -134,7 +134,7 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="searchBookingBtn" layoutX="174.0" layoutY="74.0" mnemonicParsing="false" style="-fx-background-color: #01B0EA;" text="SEARCH" textAlignment="CENTER" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="7.0" />
+                        <Button fx:id="searchBookingBtn" layoutX="174.0" layoutY="74.0" mnemonicParsing="false" onMouseClicked="#onClickedSearchBtn" style="-fx-background-color: #01B0EA;" text="SEARCH" textAlignment="CENTER" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="7.0" />
                      </children>
                   </AnchorPane>
                </children>
@@ -146,7 +146,7 @@
                <children>
                   <BorderPane maxHeight="300.0" maxWidth="400.0" minWidth="-Infinity" prefHeight="197.0" prefWidth="255.0" HBox.hgrow="SOMETIMES">
                      <top>
-                        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"  prefHeight="26.0" prefWidth="190.0" BorderPane.alignment="CENTER">
+                        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onClickedCalender" prefHeight="26.0" prefWidth="190.0" BorderPane.alignment="CENTER">
                            <children>
                               <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="April" HBox.hgrow="SOMETIMES" />
                            </children>
@@ -244,7 +244,7 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </HBox>
-      <TableView fx:id="roomResultsTable" maxWidth="1.7976931348623157E308" prefHeight="282.0" prefWidth="699.0" VBox.vgrow="ALWAYS">
+      <TableView fx:id="roomResultsTable" maxWidth="1.7976931348623157E308" prefHeight="282.0" prefWidth="699.0" stylesheets="@reservationsystemui.css" VBox.vgrow="ALWAYS">
         <columns>
           <TableColumn fx:id="roomNumTableColumn" maxWidth="775.0" minWidth="109.0" prefWidth="109.0" text="Room No." />
           <TableColumn fx:id="roomDurationTableColumn" maxWidth="1065.0" minWidth="149.0" prefWidth="149.0" text="Duration" />

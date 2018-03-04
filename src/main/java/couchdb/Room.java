@@ -7,7 +7,8 @@ public class Room {
     static String Key;
 
 
-    private Room() {
+    public Room()
+    {
 
     }
 
@@ -85,6 +86,7 @@ public class Room {
         roomNumber = roomNum;
     }
 
+<<<<<<< HEAD
     public getRoomTypeKey() {
 
     if(){
@@ -93,6 +95,59 @@ public class Room {
     }
 }
 
+=======
+
+        public HashMap<String, Object> getRooms()
+        {
+            //create an object of multiple rooms
+            HashMap<String, Object> roomsObj = new HashMap<>(); //track all rooms of HashMap (Object)
+
+            //use for loop to generate all rooms
+            for(Integer i=1;i<201;i++)
+            {
+
+                //create new room HashMap
+                HashMap<String, Object> roomObj = new HashMap<>();
+
+                //if i is even, make isEven true, else make false
+                int isEven = ((i % 201) == 0) ? 1 : 0;
+
+                //if isEven is 1, create different room, than if isEven is 0
+                switch(isEven)
+                {
+                    //set even even rooms to different properties than odd rooms
+                    case 1:
+
+
+                        roomObj.put(Room.roomTypeKey,Room.roomType.handi.toString());
+                        roomObj.put(Room.bedTypeKey,Room.bedType.queen.toString());
+                        roomObj.put(Room.petKey, Room.hasPet.no.toString());
+                        roomObj.put(Room.isSmokingKey,Room.isSmoking.no.toString());
+                        roomObj.put(Room.amenitiesKey, Room.suiteAmenities);
+
+                        break;
+
+                    //set odd rooms to different properties than even rooms
+                    case 0:
+
+                        roomObj.put(Room.roomTypeKey,Room.roomType.reg.toString());
+                        roomObj.put(Room.bedTypeKey,Room.bedType.king.toString());
+                        roomObj.put(Room.petKey, Room.hasPet.no.toString());
+                        roomObj.put(Room.isSmokingKey,Room.isSmoking.yes.toString());
+                        roomObj.put(Room.amenitiesKey, Room.regAmenities);
+
+
+                        break;
+
+                }
+
+                //i is room number, roomObj is room, embedded object
+                roomsObj.put(i.toString(), roomObj);
+
+            }
+            return roomsObj;
+        }
+>>>>>>> 78c3e336b7f345e98b8735f20b5ad918f4f3c294
 
 }
 
