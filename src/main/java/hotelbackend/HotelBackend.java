@@ -35,12 +35,12 @@ public class HotelBackend
         HotelBackend logic = new HotelBackend();
        int t = 5;
        // logic.getCalenderForDay(239484, Integer.toString(t));
-        logic.getMemberID("624123435");
-        logic.getMemberID("62423435");
-        logic.getMemberID("62463435");
-        logic.getMemberID("62543535");
+        //logic.getMemberID("624102335");
+        logic.getMemberID("624150435");
+        logic.getMemberID("624103352");
+        logic.getMemberID("624314535");
 //        logic.getMemberID("62423435");
-        //logic.bookRoom(LocalDate.now(), LocalDate.now(), roomType.reg, 5);
+//        logic.bookRoom(LocalDate.now(), LocalDate.now(), roomType.reg, 5);
 
 //         logic.getCalenderForDay(0, "NoDay");
 //         logic.getCalenderForDay(4999, "fuckIt");
@@ -302,6 +302,8 @@ Make it so that each room type can be compared with the UI
          String memberLocation = "Member is located in ";
          char regionID = memberID.charAt(3);
 
+         String stateID = memberID.substring(4,6);
+
         /*
         * if  memberID starts with the 3 digit character string of 624 then the ID is valid
         * */
@@ -327,41 +329,325 @@ Make it so that each room type can be compared with the UI
             if(regionID == '1')
             {
                 System.out.println(memberLocation + " Southwest " + reg);
+                if(stateID.contains("01"))
+                {
+                    System.out.println(memberLocation + " Washington");
+
+                }
+                else if(stateID.contains("02"))
+                {
+                    System.out.println(memberLocation + " Oregon");
+
+                }
+                else if(stateID.contains("03"))
+                {
+                    System.out.println(memberLocation + "Idaho");
+
+                }
+                else
+                {
+                    System.out.println("Not valid state ID");
+                }
                 return;
             }
             else if(regionID == '2')
             {
                 System.out.println(memberLocation + " Northwest " + reg);
+                if(stateID.contains("04"))
+                {
+                    System.out.println(memberLocation + " Califorina");
+
+                }
+                else if(stateID.contains("05"))
+                {
+                    System.out.println(memberLocation + " Arizona");
+
+                }
+               else if(stateID.contains("06"))
+                {
+                    System.out.println(memberLocation + " Nevada");
+
+                }
+                else if(stateID.contains("07"))
+                {
+                    System.out.println(memberLocation + " Uath");
+
+                }
+                else
+                {
+                    System.out.println("Not valid state ID");
+                }
+
                 return;
             }
             else if(regionID == '3')
             {
                 System.out.println(memberLocation + " SouthCentral " + reg);
+                if(stateID.contains("08"))
+                {
+                    System.out.println(memberLocation + " New Mexico");
+
+                }
+                else if(stateID.contains("09"))
+                {
+                    System.out.println(memberLocation + " Oklahoma");
+
+                }
+                else if(stateID.contains("10"))
+                {
+                    System.out.println(memberLocation + " Texas");
+
+                }
+                else if(stateID.contains("11"))
+                {
+                    System.out.println(memberLocation + "Louisana");
+
+                }
+                else
+                {
+                    System.out.println("Not valid state ID");
+                }
                 return;
             }
             else if(regionID == '4')
             {
                 System.out.println(memberLocation + " NorthCentral " + reg);
+                if(stateID.contains("12"))
+                {
+                    System.out.println(memberLocation + " Montana");
+
+                }
+                else if(stateID.contains("13"))
+                {
+                    System.out.println(memberLocation + " Wyoming");
+
+                }
+                else if(stateID.contains("14"))
+                {
+                    System.out.println(memberLocation + " Colorado");
+
+                }
+                else if(stateID.contains("15"))
+                {
+                    System.out.println(memberLocation + " North Dakoda");
+
+                }
+                else if(stateID.contains("16"))
+                {
+                    System.out.println(memberLocation + " South Dakoda");
+
+                }
+                else if(stateID.contains("17"))
+                {
+                    System.out.println(memberLocation + " Nebraska");
+
+                }
+                else if(stateID.contains("18"))
+                {
+                    System.out.println(memberLocation + " Kansas");
+                }
+                else
+                {
+                    System.out.println("Not valid state ID");
+                }
+
                 return;
             }
             else if(regionID == '5')
             {
                 System.out.println(memberLocation + " NorthEast " + reg);
+                if(stateID.contains("19"))
+                {
+                    System.out.println(memberLocation + " Minnestoa");
+
+                }
+               else if(stateID.contains("20"))
+                {
+                    System.out.println(memberLocation + " New Hampshire");
+
+                }
+                else if(stateID.contains("21"))
+                {
+                    System.out.println(memberLocation + " Iowa");
+
+                }
+                else if(stateID.contains("22"))
+                {
+                    System.out.println(memberLocation + " Missouri");
+
+                }
+                else if(stateID.contains("23"))
+                {
+                    System.out.println(memberLocation + " Wisconsin");
+
+                }
+                else if(stateID.contains("24"))
+                {
+                    System.out.println(memberLocation + " ILLinois");
+
+                }
+                else if(stateID.contains("25"))
+                {
+                    System.out.println(memberLocation + " Kentucky");
+
+                }
+                else if(stateID.contains("26"))
+                {
+                    System.out.println(memberLocation + " Indiana");
+
+                }
+                else if(stateID.contains("27"))
+                {
+                    System.out.println(memberLocation + " Ohio");
+
+                }
+                else if(stateID.contains("28"))
+                {
+                    System.out.println(memberLocation + " Michigan");
+
+                }
+                else if(stateID.contains("29"))
+                {
+                    System.out.println(memberLocation + " Virginia");
+
+                }
+                else if(stateID.contains("30"))
+                {
+                    System.out.println(memberLocation + " West Virginia");
+
+                }
+                else if(stateID.contains("31"))
+                {
+                    System.out.println(memberLocation + " Maryland");
+
+                }
+                else if(stateID.contains("32"))
+                {
+                    System.out.println(memberLocation + " Delaware");
+
+                }
+                else if(stateID.contains("33"))
+                {
+                    System.out.println(memberLocation + " New Jersey");
+
+                }
+                else if(stateID.contains("34"))
+                {
+                    System.out.println(memberLocation + " Pennsylvania");
+
+                }
+                else if(stateID.contains("35"))
+                {
+                    System.out.println(memberLocation + " Connecticut");
+
+                }
+                else if(stateID.contains("36"))
+                {
+                    System.out.println(memberLocation + " Rhode Island");
+
+                }
+                else if(stateID.contains("37"))
+                {
+                    System.out.println(memberLocation + " New York");
+
+                }
+                else  if(stateID.contains("38"))
+                {
+                    System.out.println(memberLocation + " Massachusetts");
+
+                }
+                else if(stateID.contains("39"))
+                {
+                    System.out.println(memberLocation + " Vermont");
+
+                }
+                else if(stateID.contains("40"))
+                {
+                    System.out.println(memberLocation + " Maine");
+
+                }
+                else
+                {
+                    System.out.println("Not valid state ID");
+                }
+
                 return;
             }
             else if(regionID == '6')
             {
                 System.out.println(memberLocation + " SouthEast " + reg);
+                if(stateID.contains("41"))
+                {
+                    System.out.println(memberLocation + " Mississippi");
+
+                }
+                else if(stateID.contains("42"))
+                {
+                    System.out.println(memberLocation + " Alabama");
+
+                }
+                else if(stateID.contains("43"))
+                {
+                    System.out.println(memberLocation + " Georgia");
+
+                }
+                else if(stateID.contains("44"))
+                {
+                    System.out.println(memberLocation + " Florida");
+
+                }
+                else if(stateID.contains("45"))
+                {
+                    System.out.println(memberLocation + " Arkansas");
+
+                }
+                else if(stateID.contains("46"))
+                {
+                    System.out.println(memberLocation + " North Carolina");
+
+                }
+                else  if(stateID.contains("47"))
+                {
+                    System.out.println(memberLocation + " South Carolina");
+
+                }
+                else  if(stateID.contains("48"))
+                {
+                    System.out.println(memberLocation + " Tennessee");
+
+                }
+                else
+                {
+                    System.out.println("Not valid state ID");
+                }
                 return;
             }
             else if(regionID == '7')
             {
                 System.out.println(memberLocation + " Alaska" );
+                if(stateID.contains("49"))
+                {
+                    System.out.println(memberLocation + " Alaska");
+
+                }
+                else
+                {
+                    System.out.println("Not valid state ID");
+                }
                 return;
             }
             else if(regionID == '8')
             {
                 System.out.println(memberLocation + " Pacific Islands");
+                if(stateID.contains("50"))
+                {
+                    System.out.println(memberLocation + " Hawaii");
+
+                }
+                else
+                {
+                    System.out.println("Not valid state ID");
+                }
                 return;
             }
             else
@@ -370,12 +656,13 @@ Make it so that each room type can be compared with the UI
                 System.out.println("Person has no region");
             }
 
+
+
         }
 
 
-
-
      }
+
 
    /* public void int memberRegion (int region)
     {
