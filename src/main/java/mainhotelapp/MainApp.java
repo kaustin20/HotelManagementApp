@@ -19,7 +19,7 @@
 //
 //         Scene scene = new Scene(root,463,544);
 //
-//         scene.getStylesheets().add("/styles/Styles.css");
+//         scene.getStylesheets().add("/styles/RectBtnStyle.css");
 ////         FirstKotlinKt.speakKotlin("ss");
 //         stage.setTitle(FirstKotlinKt.speakKotlin("JavaFX & Kotlin!"));
 //         stage.setScene(scene);
