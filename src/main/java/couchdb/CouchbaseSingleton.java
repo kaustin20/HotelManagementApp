@@ -11,11 +11,9 @@ import java.util.Map;
 
 //DO NOT MODIFY THE CouchbaseSingleton.java file WHILE LEARNING HOW TO USE THE DATABASE!
 
-public class CouchbaseSingleton
-{
+public class CouchbaseSingleton {
 
 
-    
     private Manager manager;
     private Database database;
     private Replication pushReplication;
@@ -33,12 +31,36 @@ public class CouchbaseSingleton
                 @Override
                 public void map(Map<String, Object> document, Emitter emitter) {
                     emitter.emit(document.get("_id"), document);
+
+                   // Map photosObj = document.get("photos");
+
+
                 }
             }, "1");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+
+//var db =  {
+    //      "photo": "ksdjsdtyyt65uiew98923", //view
+
+    //    "videos": { },
+
+    //  "timeline" : { }
+    //}
+
+    //db.get("")
+
+    //db.ge
+
+
+
+
+
+
+
 
     public static CouchbaseSingleton getInstance() {
         System.out.println("GETTING INSTANCE");
@@ -70,6 +92,8 @@ public class CouchbaseSingleton
 
     public void test() {
         System.out.println("This is a test");
+
     }
+
 
 }

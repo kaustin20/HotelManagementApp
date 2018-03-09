@@ -5,20 +5,19 @@
  */
 package hotelbackend;
 
-import couchdb.CouchbaseSingleton;
-import couchdb.Room;
-
-//import mainhotelapp.SysConstants;
+//framework imports
 
 import java.time.LocalDate;
-
-import couchdb.Room.roomType;
-
 import java.util.*;
-
 import org.json.*;
-
 import java.lang.*;
+
+//application imports
+import couchdb.Room;
+import couchdb.Room.roomType;
+import hotelbackend.HotelBackend.*;
+
+
 
 /**
  * @author kyleaustin
