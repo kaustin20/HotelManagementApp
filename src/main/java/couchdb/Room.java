@@ -86,16 +86,16 @@ public class Room {
         roomNumber = roomNum;
     }
 
-<<<<<<< HEAD
-    public getRoomTypeKey() {
+
+   /* public void getRoomTypeKey() {
 
     if(){
         //update the value for hasPet, change to use (using enum)
         oneRoom.put(Room.petKey.toString(), Room.hasPet.yes.toString());
     }
-}
+}*/
 
-=======
+
 
         public HashMap<String, Object> getRooms()
         {
@@ -147,7 +147,7 @@ public class Room {
             }
             return roomsObj;
         }
->>>>>>> 78c3e336b7f345e98b8735f20b5ad918f4f3c294
+
 
 }
 
