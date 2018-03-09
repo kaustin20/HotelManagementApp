@@ -11,6 +11,7 @@ package mainhotelapp
  *
  * @author norriswise
  */
+/*
 class SysConstants2 {
 
      object   RoomTypeConst {
@@ -21,7 +22,7 @@ class SysConstants2 {
     }
 
 
-}
+}*/
 
 
 

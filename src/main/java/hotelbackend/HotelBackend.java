@@ -7,7 +7,8 @@ package hotelbackend;
 
 import couchdb.CouchbaseSingleton;
 import couchdb.Room;
-import mainhotelapp.SysConstants;
+
+//import mainhotelapp.SysConstants;
 
 import java.time.LocalDate;
 
@@ -36,11 +37,13 @@ public class HotelBackend
        int t = 5;
        // logic.getCalenderForDay(239484, Integer.toString(t));
         //logic.getMemberID("624102335");
-        logic.getMemberID("624150435");
-        logic.getMemberID("624103352");
-        logic.getMemberID("624314535");
-//        logic.getMemberID("62423435");
-//        logic.bookRoom(LocalDate.now(), LocalDate.now(), roomType.reg, 5);
+      // logic.getMemberID("6354545655");
+       //logic.getMemberID("");
+        //logic.getMemberID("kjbsdfiowefuisfkb");
+       // logic.getMemberID("62423435");
+       // logic.bookRoom(LocalDate.now(), LocalDate.now(), roomType.handi, 5);
+
+
 
 //         logic.getCalenderForDay(0, "NoDay");
 //         logic.getCalenderForDay(4999, "fuckIt");
@@ -52,7 +55,6 @@ public class HotelBackend
 
 
     }
-
 
     public ArrayList<Object> bookRoom(LocalDate fromDate, LocalDate toDate, roomType roomType, int numOfRooms) throws Exception {
 
@@ -74,11 +76,9 @@ public class HotelBackend
 
 
 
-
-
         
         /*
-        kkk
+
 Make it so that each room type can be compared with the UI 
     1. if RoomTypeConst is set to HANDI the compare 
     2. else if RoomTypeConst is set to REG the compare
@@ -89,19 +89,20 @@ Make it so that each room type can be compared with the UI
         //if RoomType is set to HANDI then compare to the roomType
         if (roomType.handi == roomType) {//
             //if it succededs then print out the room type that was just compared
-            System.out.print("HANDI");
+            System.out.println("HANDI");
             myRoomType = "HANDI";
         } //else if RoomType is set to REG then compare to the roomType
         else if (roomType.reg == roomType) {
             //if it succededs then print out the room type that was just compared
-            System.out.print("REG");
+            System.out.println("REG");
             myRoomType = "REG";
         } //else if RoomType is set to SUITE then compare to the roomType
         else if (roomType.suite == roomType) {
             //if it succededs then print out the room type that was just compared
-            System.out.print("SUITE");
+            System.out.println("SUITE");
             myRoomType = "SUITE";
-        } else {
+        }
+        else {
             //else send error 
             System.out.print("Error");
         }
@@ -304,14 +305,47 @@ Make it so that each room type can be compared with the UI
 
          String stateID = memberID.substring(4,6);
 
+         String validMemberID = "\nMember ID is valid\n";
+
+            int sizeOfMemID = memberID.length();
         /*
         * if  memberID starts with the 3 digit character string of 624 then the ID is valid
         * */
             String reg = "region " ;
-         if (memberID.startsWith("624"))
+        /*
+        * If the member id length is equal to  then check if the member ID string starts with 624 the print that the code is valid
+        * else hotel key is not valid and return
+        * */
+         if(memberID.length() == 9)
          {
-             System.out.println("Member ID is valid ");
+             System.out.println("ID is length valid");
+
+             if (memberID.startsWith("624")) {
+                 System.out.println("This hotel code is valid  ");
+             } else {
+                 System.out.println("Not a valid hotel key");
+                 return;
+             }
+
+             //return;
          }
+
+         else if(memberID.length() == 0)
+         // else if member ID length is equal to 0 then throw exception
+         {
+            throw new IllegalArgumentException();
+             //return;
+         }
+         /*else if(memberID.contains(".*[a-z].*"))
+         {
+            throw new IllegalArgumentException();
+         }*/
+         else
+             {
+               //  System.out.println("error");
+                 return;
+             }
+
         /*
         *  while the memberID starts with the string value of 624 implement the following logic to check for the regionID
         *  If regionID 1-7 then return one of th following 7 regional locations:
@@ -331,17 +365,18 @@ Make it so that each room type can be compared with the UI
                 System.out.println(memberLocation + " Southwest " + reg);
                 if(stateID.contains("01"))
                 {
-                    System.out.println(memberLocation + " Washington");
+                    System.out.println(memberLocation + " Washington" + validMemberID );
 
                 }
                 else if(stateID.contains("02"))
                 {
-                    System.out.println(memberLocation + " Oregon");
+                    System.out.println(memberLocation + " Oregon" + validMemberID);
 
                 }
                 else if(stateID.contains("03"))
                 {
-                    System.out.println(memberLocation + "Idaho");
+                    System.out.println(memberLocation + "Idaho" + validMemberID );
+
 
                 }
                 else
@@ -355,22 +390,22 @@ Make it so that each room type can be compared with the UI
                 System.out.println(memberLocation + " Northwest " + reg);
                 if(stateID.contains("04"))
                 {
-                    System.out.println(memberLocation + " Califorina");
+                    System.out.println(memberLocation + " Califorina" + validMemberID );
 
                 }
                 else if(stateID.contains("05"))
                 {
-                    System.out.println(memberLocation + " Arizona");
+                    System.out.println(memberLocation + " Arizona" + validMemberID );
 
                 }
                else if(stateID.contains("06"))
                 {
-                    System.out.println(memberLocation + " Nevada");
+                    System.out.println(memberLocation + " Nevada" + validMemberID );
 
                 }
                 else if(stateID.contains("07"))
                 {
-                    System.out.println(memberLocation + " Uath");
+                    System.out.println(memberLocation + " Uath" + validMemberID );
 
                 }
                 else
@@ -385,22 +420,22 @@ Make it so that each room type can be compared with the UI
                 System.out.println(memberLocation + " SouthCentral " + reg);
                 if(stateID.contains("08"))
                 {
-                    System.out.println(memberLocation + " New Mexico");
+                    System.out.println(memberLocation + " New Mexico" + validMemberID );
 
                 }
                 else if(stateID.contains("09"))
                 {
-                    System.out.println(memberLocation + " Oklahoma");
+                    System.out.println(memberLocation + " Oklahoma"+ validMemberID );
 
                 }
                 else if(stateID.contains("10"))
                 {
-                    System.out.println(memberLocation + " Texas");
+                    System.out.println(memberLocation + " Texas"+ validMemberID );
 
                 }
                 else if(stateID.contains("11"))
                 {
-                    System.out.println(memberLocation + "Louisana");
+                    System.out.println(memberLocation + "Louisana"+ validMemberID );
 
                 }
                 else
@@ -414,37 +449,37 @@ Make it so that each room type can be compared with the UI
                 System.out.println(memberLocation + " NorthCentral " + reg);
                 if(stateID.contains("12"))
                 {
-                    System.out.println(memberLocation + " Montana");
+                    System.out.println(memberLocation + " Montana"+ validMemberID );
 
                 }
                 else if(stateID.contains("13"))
                 {
-                    System.out.println(memberLocation + " Wyoming");
+                    System.out.println(memberLocation + " Wyoming"+ validMemberID );
 
                 }
                 else if(stateID.contains("14"))
                 {
-                    System.out.println(memberLocation + " Colorado");
+                    System.out.println(memberLocation + " Colorado"+ validMemberID );
 
                 }
                 else if(stateID.contains("15"))
                 {
-                    System.out.println(memberLocation + " North Dakoda");
+                    System.out.println(memberLocation + " North Dakoda"+ validMemberID );
 
                 }
                 else if(stateID.contains("16"))
                 {
-                    System.out.println(memberLocation + " South Dakoda");
+                    System.out.println(memberLocation + " South Dakoda"+ validMemberID );
 
                 }
                 else if(stateID.contains("17"))
                 {
-                    System.out.println(memberLocation + " Nebraska");
+                    System.out.println(memberLocation + " Nebraska"+ validMemberID);
 
                 }
                 else if(stateID.contains("18"))
                 {
-                    System.out.println(memberLocation + " Kansas");
+                    System.out.println(memberLocation + " Kansas"+ validMemberID );
                 }
                 else
                 {
@@ -458,112 +493,112 @@ Make it so that each room type can be compared with the UI
                 System.out.println(memberLocation + " NorthEast " + reg);
                 if(stateID.contains("19"))
                 {
-                    System.out.println(memberLocation + " Minnestoa");
+                    System.out.println(memberLocation + " Minnestoa"+ validMemberID );
 
                 }
                else if(stateID.contains("20"))
                 {
-                    System.out.println(memberLocation + " New Hampshire");
+                    System.out.println(memberLocation + " New Hampshire"+ validMemberID );
 
                 }
                 else if(stateID.contains("21"))
                 {
-                    System.out.println(memberLocation + " Iowa");
+                    System.out.println(memberLocation + " Iowa"+ validMemberID );
 
                 }
                 else if(stateID.contains("22"))
                 {
-                    System.out.println(memberLocation + " Missouri");
+                    System.out.println(memberLocation + " Missouri"+ validMemberID );
 
                 }
                 else if(stateID.contains("23"))
                 {
-                    System.out.println(memberLocation + " Wisconsin");
+                    System.out.println(memberLocation + " Wisconsin"+ validMemberID );
 
                 }
                 else if(stateID.contains("24"))
                 {
-                    System.out.println(memberLocation + " ILLinois");
+                    System.out.println(memberLocation + " ILLinois"+ validMemberID );
 
                 }
                 else if(stateID.contains("25"))
                 {
-                    System.out.println(memberLocation + " Kentucky");
+                    System.out.println(memberLocation + " Kentucky"+ validMemberID );
 
                 }
                 else if(stateID.contains("26"))
                 {
-                    System.out.println(memberLocation + " Indiana");
+                    System.out.println(memberLocation + " Indiana"+ validMemberID );
 
                 }
                 else if(stateID.contains("27"))
                 {
-                    System.out.println(memberLocation + " Ohio");
+                    System.out.println(memberLocation + " Ohio"+ validMemberID );
 
                 }
                 else if(stateID.contains("28"))
                 {
-                    System.out.println(memberLocation + " Michigan");
+                    System.out.println(memberLocation + " Michigan"+ validMemberID );
 
                 }
                 else if(stateID.contains("29"))
                 {
-                    System.out.println(memberLocation + " Virginia");
+                    System.out.println(memberLocation + " Virginia"+ validMemberID );
 
                 }
                 else if(stateID.contains("30"))
                 {
-                    System.out.println(memberLocation + " West Virginia");
+                    System.out.println(memberLocation + " West Virginia"+ validMemberID );
 
                 }
                 else if(stateID.contains("31"))
                 {
-                    System.out.println(memberLocation + " Maryland");
+                    System.out.println(memberLocation + " Maryland"+ validMemberID );
 
                 }
                 else if(stateID.contains("32"))
                 {
-                    System.out.println(memberLocation + " Delaware");
+                    System.out.println(memberLocation + " Delaware"+ validMemberID );
 
                 }
                 else if(stateID.contains("33"))
                 {
-                    System.out.println(memberLocation + " New Jersey");
+                    System.out.println(memberLocation + " New Jersey"+ validMemberID );
 
                 }
                 else if(stateID.contains("34"))
                 {
-                    System.out.println(memberLocation + " Pennsylvania");
+                    System.out.println(memberLocation + " Pennsylvania"+ validMemberID );
 
                 }
                 else if(stateID.contains("35"))
                 {
-                    System.out.println(memberLocation + " Connecticut");
+                    System.out.println(memberLocation + " Connecticut"+ validMemberID );
 
                 }
                 else if(stateID.contains("36"))
                 {
-                    System.out.println(memberLocation + " Rhode Island");
+                    System.out.println(memberLocation + " Rhode Island"+ validMemberID );
 
                 }
                 else if(stateID.contains("37"))
                 {
-                    System.out.println(memberLocation + " New York");
+                    System.out.println(memberLocation + " New York"+ validMemberID );
 
                 }
                 else  if(stateID.contains("38"))
                 {
-                    System.out.println(memberLocation + " Massachusetts");
+                    System.out.println(memberLocation + " Massachusetts"+ validMemberID );
 
                 }
                 else if(stateID.contains("39"))
                 {
-                    System.out.println(memberLocation + " Vermont");
+                    System.out.println(memberLocation + " Vermont"+ validMemberID );
 
                 }
                 else if(stateID.contains("40"))
                 {
-                    System.out.println(memberLocation + " Maine");
+                    System.out.println(memberLocation + " Maine"+ validMemberID );
 
                 }
                 else
@@ -578,42 +613,42 @@ Make it so that each room type can be compared with the UI
                 System.out.println(memberLocation + " SouthEast " + reg);
                 if(stateID.contains("41"))
                 {
-                    System.out.println(memberLocation + " Mississippi");
+                    System.out.println(memberLocation + " Mississippi"+ validMemberID );
 
                 }
                 else if(stateID.contains("42"))
                 {
-                    System.out.println(memberLocation + " Alabama");
+                    System.out.println(memberLocation + " Alabama"+ validMemberID );
 
                 }
                 else if(stateID.contains("43"))
                 {
-                    System.out.println(memberLocation + " Georgia");
+                    System.out.println(memberLocation + " Georgia" + validMemberID );
 
                 }
                 else if(stateID.contains("44"))
                 {
-                    System.out.println(memberLocation + " Florida");
+                    System.out.println(memberLocation + " Florida"+ validMemberID );
 
                 }
                 else if(stateID.contains("45"))
                 {
-                    System.out.println(memberLocation + " Arkansas");
+                    System.out.println(memberLocation + " Arkansas"+ validMemberID );
 
                 }
                 else if(stateID.contains("46"))
                 {
-                    System.out.println(memberLocation + " North Carolina");
+                    System.out.println(memberLocation + " North Carolina"+ validMemberID );
 
                 }
                 else  if(stateID.contains("47"))
                 {
-                    System.out.println(memberLocation + " South Carolina");
+                    System.out.println(memberLocation + " South Carolina"+ validMemberID );
 
                 }
                 else  if(stateID.contains("48"))
                 {
-                    System.out.println(memberLocation + " Tennessee");
+                    System.out.println(memberLocation + " Tennessee"+ validMemberID );
 
                 }
                 else
@@ -624,7 +659,7 @@ Make it so that each room type can be compared with the UI
             }
             else if(regionID == '7')
             {
-                System.out.println(memberLocation + " Alaska" );
+                System.out.println(memberLocation + " Alaska"+ validMemberID  );
                 if(stateID.contains("49"))
                 {
                     System.out.println(memberLocation + " Alaska");
@@ -641,7 +676,7 @@ Make it so that each room type can be compared with the UI
                 System.out.println(memberLocation + " Pacific Islands");
                 if(stateID.contains("50"))
                 {
-                    System.out.println(memberLocation + " Hawaii");
+                    System.out.println(memberLocation + " Hawaii"+ validMemberID );
 
                 }
                 else
@@ -654,14 +689,18 @@ Make it so that each room type can be compared with the UI
             {
 
                 System.out.println("Person has no region");
+                System.out.println("Person State cant be located\n");
+                return;
             }
-
+           // return;
 
 
         }
 
 
      }
+
+
 
 
    /* public void int memberRegion (int region)

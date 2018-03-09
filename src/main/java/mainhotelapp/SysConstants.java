@@ -9,12 +9,13 @@ package mainhotelapp;
  *
  * @author norriswise
  */
+/*
 public class SysConstants {
 
     public enum RoomType {
         SUITE, REG, HANDI
     }
-};
+};*/
 
 
 
