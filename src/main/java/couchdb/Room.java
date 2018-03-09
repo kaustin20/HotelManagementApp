@@ -3,6 +3,7 @@ package couchdb;
 import java.util.HashMap;
 
 public class Room {
+
     static String roomNumber;
 
 

@@ -32,8 +32,24 @@ class ReservationView : View()
 
     override val root = VBox()
 
+    //------- fxml --------- fxml --------- fxml --------- fxml ---------
     val rootFXML: VBox by fxml("/fxml/ReservationSystemUI.fxml")
     val bookingContainer: VBox by fxid()
+    val fromBookingDatePicker: DatePicker by fxid()
+    val toBookingDatePicker: DatePicker by fxid()
+    val roomBookingTypeComboBox: ComboBox<Room.roomType> by fxid()
+    val numOfBookedRoomsComboBox: ComboBox<Int> by fxid()
+    val searchBookingBtn: Button by fxid()
+    //---------fxml ---------fxml ---------fxml ---------fxml ---------
+
+//------ fxmlControllerLogic include ------- fxmlControllerLogic include -------
+
+    val fxmlControllerRef = ReservationFXMLControllerLogic()
+
+    //------ fxmlControllerLogic include ------- fxmlControllerLogic include -------
+
+
+
     val availableRoomsLabelWithDivider: HBox by fxid()
 
 
@@ -161,25 +177,58 @@ class ReservationView : View()
             notesColumn.setCellValueFactory { it.value.notesProperty }
 
             val addPackagesColumn = TableColumn<AvailableRooms, String>("Add. Packages")
-            addPackagesColumn.prefWidthProperty().set(150.0)
-            addPackagesColumn.minWidthProperty().set(addPackagesColumn.prefWidth)
-            addPackagesColumn.resizableProperty().set(true)
+            addPackagesColumn.prefWidthProperty().set(130.0)
+
+//            addPackagesColumn.minWidthProperty().set(addPackagesColumn.prefWidth)
+
+//            addPackagesColumn.resizableProperty().set(true)
             addPackagesColumn.setCellFactory {  PackagesTableViewCell(addPackagesColumn) }
-            addPackagesColumn.setCellValueFactory {
-
-                //convert mutable array into string with ";" separators and return
-                SimpleStringProperty(it.value.addPackagesPropertyProperty.value.joinToString(";"))
-            }
-
-                this.columns.setAll(roomNumCol, durationColumn, notesColumn, addPackagesColumn)
+            addPackagesColumn.setCellValueFactory { it.value.addPackagesStringProperty}
 
 
-//            column<AvailableRooms, String?>("Room Amenities", "Amenities").useComboBox<AvailableRooms, String>(items = items.observable() as ObservableList<String>)
+
+
+            val submitButtonColumn = TableColumn<AvailableRooms, String>("Submit")
+            submitButtonColumn.setCellFactory { SubmitBtnTableViewCell(submitButtonColumn)}
+//            submitButtonColumn.prefWidthProperty().set(150.0)
+            submitButtonColumn.setCellValueFactory { SimpleStringProperty("Submit") }
+
+            this.columns.setAll(roomNumCol, durationColumn, notesColumn, addPackagesColumn, submitButtonColumn)
+
+
+
+
+
+        }
+
+        roomBookingTypeComboBox.items.addAll(Room.roomType.reg,Room.roomType.handi,Room.roomType.suite)
+        numOfBookedRoomsComboBox.items.addAll(1,2,3,4,5)
+        searchBookingBtn.setOnMouseClicked {
+            val rez =  HotelBackend().bookRoom(fromBookingDatePicker.value, toBookingDatePicker.value, roomBookingTypeComboBox.value, numOfBookedRoomsComboBox.value)
+            println("rez: $rez")
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         }
 
     }
+
+
+
 }
+
+
 
 
     class MainAppKotlin : App(ReservationView::class)

@@ -14,7 +14,7 @@ import tornadofx.setValue
 class AvailableRooms(roomNumber:Int = 0, stayDuration : String = "defaultValue",notes: String = "defaultValue",hasPet: String="defaultValue",
                      roomType: String="defaultValue", bedType: String="defaultValue", isSmoking: String="defaultValue",
                      amenities: MutableList<String> = mutableListOf("defaultValue"),
-                     addPackages : MutableList<SimpleStringProperty> = mutableListOf(SimpleStringProperty("defaultValue")))
+                     addPackages : MutableList<String> = mutableListOf("defaultValue","defaultValue","defaultValue","defaultValue","defaultValue","defaultValue","defaultValue","defaultValue","defaultValue"))
 {
 //    val roomNumberProperty = SimpleIntegerProperty(roomNumber)
 //    fun roomNumberProperty() = roomNumberProperty
@@ -37,8 +37,8 @@ class AvailableRooms(roomNumber:Int = 0, stayDuration : String = "defaultValue",
     var amenities by property(amenities)
     val amenitiesProperty : ObservableList<String> = amenities.observable()
 
-    val addPackagesPropertyProperty = SimpleObjectProperty<MutableList<SimpleStringProperty>>(addPackages)
-    var addPackagesStringProperty by addPackagesPropertyProperty
+    var addPackagesStringProperty = SimpleStringProperty()
+    var addPackagesString by addPackagesStringProperty
 
 
     val roomTypeProperty = SimpleStringProperty(roomType)
@@ -51,13 +51,12 @@ class AvailableRooms(roomNumber:Int = 0, stayDuration : String = "defaultValue",
     var isSmoking by isSmokingProperty
 
 
-//    init {
-//            val pkgsString = addPackages.reduce { allPkgs, pkg ->  allPkgs}
-//
-//        SimpleObjectProperty<MutableList<SimpleStringProperty>>(addPackages)
-//
-//
-//    }
+    init {
+            val pkgsString = addPackages.joinToString(";")
+        println("value of pkgsStrring from Available Rooms: $pkgsString")
+            addPackagesStringProperty = SimpleStringProperty(pkgsString)
+
+    }
 
 
 }

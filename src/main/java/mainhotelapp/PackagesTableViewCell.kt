@@ -1,11 +1,12 @@
 package mainhotelapp
 
+import javafx.geometry.Insets
 import javafx.scene.control.*
-import javafx.scene.layout.HBox
 import javafx.scene.text.Text
 import tornadofx.*
 import javafx.scene.control.ListCell
-
+import javafx.scene.control.cell.CheckBoxListCell
+import javafx.scene.layout.*
 
 
 //create listView singleton
@@ -13,48 +14,93 @@ var addPackagesList by singleAssign<ListView<String>>()
 
 class PackagesTableViewCell (packagesColumn: TableColumn<AvailableRooms, String>): TableCell<AvailableRooms, String>()
 {
-    val listView = ListView<String>()
+    val tableCellHeight = 50.0
 
     init{
         isEditable = false
 
-        this.prefWidthProperty().bind(packagesColumn.widthProperty())
-        this.prefHeightProperty().set(100.0)
+//        listView.vgrow = Priority.NEVER
+//        listView.setCellFactory { PackageListViewCell() }
 
+
+        this.prefWidthProperty().bind(packagesColumn.widthProperty())
+
+        this.prefHeightProperty().set(tableCellHeight)
+        this.maxHeightProperty().set(tableCellHeight)
+        println("colWidth: ${packagesColumn.widthProperty().get()}")
 
     }
 
     override fun updateItem(item: String?, empty: Boolean) {
         super.updateItem(item, empty)
-
-        //pass in a string to the updateItem, the string
-        //will be a strings separated by commas
-        //ex.) one,two,three,four...
-        //then we will use the comma as the separator and
-        //map each word to an item in a List, inside of a ListView
-        //then we will retain the list view, set it equal to
-        //the list view property in the class (create one if not created)
-        //and set the graphic property equal to the listView
-        //then set text to null
-        //done
-
-
+        println("tableItem: $item")
 
 
         //if not null split into array, if null make empty array
         val pkgListAry = if(item != null) item!!.split(";".toRegex()) else listOf()
 
+//        val myListView = ListView<String>()
+//        myListView.vgrow = Priority.NEVER
+//
+//        myListView.prefHeightProperty().bind(this.heightProperty())
+//        myListView.vgrow = Priority.NEVER
+//        myListView.setCellFactory {  }
+//        graphic = vbox { add(myListView) }
 
 
-            listView.prefWidthProperty().bind(this.widthProperty())
-            listView.setCellFactory { PackageListViewCell() }
-            listView.editableProperty().set(false)
-            listView.items = pkgListAry.observable()
-
-             graphic = listView
-
+        val scrollPane = ScrollPane()
+        scrollPane.hbarPolicy = ScrollPane.ScrollBarPolicy.NEVER
+        scrollPane.vbarPolicy = ScrollPane.ScrollBarPolicy.AS_NEEDED
+        scrollPane.vmax = this.prefHeightProperty().get()
+        scrollPane.hmax = this.prefWidthProperty().get()
 
 
+        val vbox = VBox()
+        vbox.fitToParentWidth()
+
+
+        pkgListAry.forEachIndexed { index, s ->
+
+            val hbox = HBox()
+            hbox.vgrow = Priority.NEVER
+            hbox.paddingAll = 5
+            hbox.fitToParentWidth()
+
+
+            val text = Text()
+            text.text = s
+
+            val checkbox = CheckBox()
+            checkbox.isSelected = false
+
+
+            hbox.add(text)
+            hbox.add(checkbox)
+            vbox.add(hbox)
+
+            scrollPane.content = vbox
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+        graphic = scrollPane
+
+
+
+
+
+
+
+//        graphic = listView
         //graphics need to equal a list view
 //        graphic = //a ListView
 
@@ -76,31 +122,28 @@ class PackagesTableViewCell (packagesColumn: TableColumn<AvailableRooms, String>
 
  class PackageListViewCell : ListCell<String>()
  {
-     val hbox = HBox()
-     val textObj = Text()
-     val checkBox = CheckBox()
+//
 
-     init {
-         hbox.prefWidthProperty().bind(this.widthProperty())
-     }
 
     public override fun updateItem(item: String?, empty: Boolean) {
         super.updateItem(item, empty)
 
-        textObj.text = "Hello World"
+        println("isEmpty Bool: $empty")
 
+            val hbox = HBox()
+            val textObj = Text()
+            val checkBox = CheckBox()
 
-        checkBox.isSelected = false
-        checkBox.isDisable = true
+            textObj.text = item
 
-        hbox.add(textObj)
+            checkBox.isSelected = false
+            checkBox.isDisable = true
 
-        hbox.add(checkBox)
+            hbox.add(textObj)
 
-        graphic = hbox
+            hbox.add(checkBox)
 
-
-
+//            graphic = hbox
 
     }
 }

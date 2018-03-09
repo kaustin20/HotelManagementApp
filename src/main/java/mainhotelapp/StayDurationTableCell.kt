@@ -23,16 +23,14 @@ class StayDurationTableCell (durationColumn : TableColumn<AvailableRooms, String
 
 
     init {
-        isEditable = false
 
+        isEditable = false
         this.prefWidthProperty().bind(durationColumn.widthProperty())
         this.prefHeightProperty().set(100.0)
     }
     override fun updateItem(item: String?, empty: Boolean)
     {
         super.updateItem(item, empty)
-
-
 
         fromDateProperty.set(item)
         toDateProperty.set(item)
@@ -54,10 +52,6 @@ class StayDurationTableCell (durationColumn : TableColumn<AvailableRooms, String
 
     fun createGraphics() : StackPane
     {
-
-
-
-
         val stack = StackPane()
         stack.prefWidthProperty().bind(this.widthProperty())
         stack.prefHeightProperty().bind(this.heightProperty())

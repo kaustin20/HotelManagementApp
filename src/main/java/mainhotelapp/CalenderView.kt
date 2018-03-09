@@ -76,9 +76,6 @@ class CalenderView constructor(listOfDays : List<Int>, parentView : SplitPane) :
 
                     text = "$it"
 
-
-
-
                 }
 
 
