@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="699.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="714.0" prefWidth="699.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox fx:id="navBtnBar" maxHeight="100.0" maxWidth="1.7976931348623157E308" prefHeight="73.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
          <children>
@@ -73,7 +73,7 @@
       <Separator prefWidth="200.0" />
       <SplitPane dividerPositions="0.381635581061693, 0.8694404591104734" prefHeight="284.0" prefWidth="699.0">
          <items>
-            <VBox maxWidth="300.0" prefHeight="159.0" prefWidth="234.0" spacing="5.0">
+            <VBox fx:id="bookingContainer" maxWidth="300.0" prefHeight="159.0" prefWidth="234.0" spacing="5.0">
                <children>
                   <Label text="Booking Information:" />
                   <Separator prefWidth="200.0" />
@@ -146,7 +146,7 @@
                <children>
                   <BorderPane maxHeight="300.0" maxWidth="400.0" minWidth="-Infinity" prefHeight="197.0" prefWidth="255.0" HBox.hgrow="SOMETIMES">
                      <top>
-                        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"  prefHeight="26.0" prefWidth="190.0" BorderPane.alignment="CENTER">
+                        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="190.0" BorderPane.alignment="CENTER">
                            <children>
                               <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="April" HBox.hgrow="SOMETIMES" />
                            </children>
@@ -219,7 +219,7 @@
             <WebView fx:id="calenderResultsWebView" prefHeight="200.0" prefWidth="200.0" />
          </items>
       </SplitPane>
-      <HBox maxWidth="1.7976931348623157E308">
+      <HBox fx:id="availableRoomsLabelWithDivider" maxWidth="1.7976931348623157E308">
          <children>
             <Separator prefHeight="0.0" prefWidth="14.0">
                <HBox.margin>

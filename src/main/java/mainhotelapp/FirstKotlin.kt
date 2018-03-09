@@ -10,13 +10,13 @@ fun speakKotlin(statement: String) : String
 {
     return "The Statement is: " + statement
 }
-
-
-
+//
+//
+//
 //------------------- Building UI
-
-
-
+//
+//
+//
 
 class MyView1 : View()
 {
