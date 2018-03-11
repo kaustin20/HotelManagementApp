@@ -73,13 +73,21 @@ public class DBTester
         newMap1.put("key"+20, "value"+20);
         Map<String, Object> updatedMap = dbClassRef.updateDocInDB(DBNames.sampleDocName,newMap1);
 
-        //read updatedMap to console
+        //prints updatedMap to console
         dbClassRef.printDocAsJSON(updatedMap, 6);
+
+        //searches for a keyValue pair in a document
+        Map.Entry<String, Object> returnedKeyValuePair = dbClassRef.searchForKeyValueInDoc(DBNames.sampleDocName, "key20", "value20");
+
+        //prints key value pair to the console (wrap this in a map, then print it to the console)
+        HashMap newMap = new HashMap<String, Object>();
+        newMap.put(returnedKeyValuePair.getKey(), returnedKeyValuePair.getValue());
+        dbClassRef.printDocAsJSON(newMap, 2);
 
         //permenantly removes (purges) a document from the database and returns the deleted Map
         Map<String, Object> removedDoc = dbClassRef.permenantlyRemoveDoc(DBNames.sampleDocName);
 
-        //read removed doc to console
+        //prints removed doc to console
         dbClassRef.printDocAsJSON(removedDoc, 10);
 
 
