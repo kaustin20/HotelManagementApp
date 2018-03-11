@@ -67,6 +67,7 @@ public class DBTester
         Map<String, Object> newDocMap = dbClassRef.createDoc(DBNames.sampleDocName, newMap1);
 
         //reads a Map (not a document, only send a Map) to the console with an indent factor
+        System.out.println("\nprintMap1\n");
         dbClassRef.printDocAsJSON(newDocMap, 3);
 
         //updates a document, and returns the updated Map
@@ -74,6 +75,7 @@ public class DBTester
         Map<String, Object> updatedMap = dbClassRef.updateDocInDB(DBNames.sampleDocName,newMap1);
 
         //prints updatedMap to console
+        System.out.println("\nprintMap2\n");
         dbClassRef.printDocAsJSON(updatedMap, 6);
 
         //searches for a keyValue pair in a document
@@ -82,12 +84,14 @@ public class DBTester
         //prints key value pair to the console (wrap this in a map, then print it to the console)
         HashMap newMap = new HashMap<String, Object>();
         newMap.put(returnedKeyValuePair.getKey(), returnedKeyValuePair.getValue());
+        System.out.println("\nprintMap3\n");
         dbClassRef.printDocAsJSON(newMap, 2);
 
         //permenantly removes (purges) a document from the database and returns the deleted Map
         Map<String, Object> removedDoc = dbClassRef.permenantlyRemoveDoc(DBNames.sampleDocName);
 
         //prints removed doc to console
+        System.out.println("\nprintMap4\n");
         dbClassRef.printDocAsJSON(removedDoc, 10);
 
 
