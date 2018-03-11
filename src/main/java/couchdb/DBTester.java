@@ -2,6 +2,8 @@ package couchdb;
 
 
 import com.couchbase.lite.*;
+
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,12 +13,14 @@ import mainhotelapp.SysConstants;
 ;
 import java.net.URL;
 
+
 import java.util.HashMap;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+
 
 import org.json.*;
 
@@ -48,3 +52,4 @@ public class DBTester
 
 
 }
+
