@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 package mainhotelapp
 
 /*
@@ -32,7 +32,7 @@ class SysConstants2 {
 
 
 
-=======
+
 //package mainhotelapp
 //
 ///*
@@ -65,4 +65,4 @@ class SysConstants2 {
 //
 //
 //
->>>>>>> 574a8d87b7bfe28ff404b553fed395548e2e56bf
+

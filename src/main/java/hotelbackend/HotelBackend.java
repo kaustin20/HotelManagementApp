@@ -16,6 +16,9 @@ import java.lang.*;
 import couchdb.Room;
 import couchdb.Room.roomType;
 import hotelbackend.HotelBackend.*;
+import couchdb.CouchbaseSingleton;
+import couchdb.Room;
+import couchdb.DBTester;
 
 
 
@@ -34,6 +37,8 @@ public class HotelBackend
     public static void main(String[] args) throws Exception {
         HotelBackend logic = new HotelBackend();
        int t = 5;
+     // logic.getHotelBill(LocalDate.now(),LocalDate.now(),roomType.handi,1);
+        logic.spaDate(LocalDate.now(),1);
        // logic.getCalenderForDay(239484, Integer.toString(t));
         //logic.getMemberID("624102335");
       // logic.getMemberID("6354545655");
@@ -54,7 +59,102 @@ public class HotelBackend
 
 
     }
+//
+    public void spaPrice()
+    {
 
+    }
+
+    public void spaDate(LocalDate spaDay,int spaRezDay)
+    {
+        //int spaRez;
+
+        /*
+        * this allows an individual to book one spaday per visit to the hotel\
+        * if valid amount of spa visits then it will return the date the spa day will be on
+        * */
+        if(spaRezDay == 1)
+        {
+            spaDay.getDayOfMonth();
+            spaDay.getMonthValue();
+            spaDay.getYear();
+
+            System.out.println("your spa day is on " + spaDay);
+        }
+        else
+        {
+            System.out.println("number of days exceed allowed per booking");
+        }
+
+
+
+    }
+
+    public void getHotelBill(LocalDate fromDate, LocalDate toDate, roomType roomType, int numOfRooms)
+    {
+        /*
+         * IF the room type is  set the value of roomReg to 120 and get day month and year
+         *
+         * */
+        //int spaRez;
+
+        if(roomType.handi == roomType)
+        {
+            int roomHandi = 100;
+
+           fromDate.getDayOfMonth();
+            fromDate.getMonthValue();
+            fromDate.getYear();
+
+            toDate.getDayOfMonth();
+            toDate.getMonthValue();
+            toDate.getYear();
+
+
+
+            System.out.print(roomHandi * (fromDate.getDayOfMonth()) + toDate.getDayOfMonth());
+        }
+        /*
+        * IF the room type is regular set the value of roomReg to 120 and get day month and year
+        *
+        *
+        * */
+        else if(roomType.reg == roomType)
+        {
+            int roomHandi = 120;
+
+            fromDate.getDayOfMonth();
+            fromDate.getMonthValue();
+            fromDate.getYear();
+
+            toDate.getDayOfMonth();
+            toDate.getMonthValue();
+            toDate.getYear();
+
+
+
+            System.out.print(roomHandi * (fromDate.getDayOfMonth()) + toDate.getDayOfMonth());
+        }
+         /*
+        * IF the room type is suite set the value of roomReg to 150 and get day month and year
+        * */
+        else if(roomType.suite == roomType)
+        {
+            int roomHandi = 150;
+
+            fromDate.getDayOfMonth();
+            fromDate.getMonthValue();
+            fromDate.getYear();
+
+            toDate.getDayOfMonth();
+            toDate.getMonthValue();
+            toDate.getYear();
+
+
+
+            System.out.print(roomHandi * (fromDate.getDayOfMonth()) + toDate.getDayOfMonth());
+        }
+    }
     public ArrayList<Object> bookRoom(LocalDate fromDate, LocalDate toDate, roomType roomType, int numOfRooms) throws Exception {
 
         String myRoomType = "";

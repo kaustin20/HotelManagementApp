@@ -16,7 +16,7 @@ public class Employee {
     public void setEmployeePosition()
     {}
 
-    public void setSalary(int salary)
+    public void setSalary(int gsalary)
     {}
 
 }
