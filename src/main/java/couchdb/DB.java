@@ -49,7 +49,12 @@ public class DB
                 }
 
                 Document updatedDoc = allDB.getExistingDocument(withDocName);
-                return updatedDoc.getProperties();
+
+
+                Map<String, Object> mutableCopy = new HashMap<String, Object>();
+
+                mutableCopy.putAll(updatedDoc.getProperties());
+                return mutableCopy;
 
             }
             else{
@@ -96,7 +101,10 @@ public class DB
             updatedDoc = allDB.getExistingDocument(withDocName);
         }
 
-        return updatedDoc.getProperties();
+        Map<String, Object> mutableCopy = new HashMap<String, Object>();
+
+        mutableCopy.putAll(updatedDoc.getProperties());
+        return mutableCopy;
     }
 
 
@@ -137,7 +145,7 @@ public class DB
 
                 keyValuePairInDoc = docHashMap.entrySet().stream().filter((entry) -> {
 
-                    if((key == entry.getKey()) && (value == entry.getValue())) return true;
+                    if(( key.equals(entry.getKey())) && (value.equals(entry.getValue()))) return true;
 
                     return false;
 
@@ -193,11 +201,17 @@ public class DB
         else{
 
             Document currentDoc = allDB.getExistingDocument(withDocName);
-            removedDoc = currentDoc;
+            removedDoc = currentDoc ;
             if(currentDoc == null)
             {
                 System.out.println(ConsoleColors.yellowText("A CouchBase Document with the name: "+withDocName+" already exists\nreturning null"));
-                return removedDoc.getProperties();
+
+
+
+                Map<String, Object> mutableCopy = new HashMap<String, Object>();
+
+                mutableCopy.putAll(removedDoc.getProperties());
+                return mutableCopy;
             }
             else
             {
@@ -213,8 +227,39 @@ public class DB
 
         }
 
-        return removedDoc.getProperties();
+        return  null;
     }
 
 
+
+    //This function looks for a document based on the provided name passed into the
+    //param, if no argument is specified this function will throw. If successfully found,
+    //a document will return the Map<K,V> form of the document in the database
+    Map<String, Object> readDocInDB(String withDocName) {
+        Document removedDoc = null;
+        if ((withDocName == "") || (withDocName == null)) {
+            //create formatted params string to display in console
+            String params = "--- Arguments ---\n\twithDocName: " + withDocName;
+
+            throw new IllegalArgumentException("Cannot pass a null or empty string value to this function\nCheck Params:\n\n" + params);
+        } else {
+
+            Document currentDoc = allDB.getExistingDocument(withDocName);
+
+            if (currentDoc == null) {
+                System.out.println(ConsoleColors.yellowText("A CouchBase Document with the name: " + withDocName + " already exists\nreturning null"));
+                return removedDoc.getProperties();
+            }
+            else
+            {
+                Map<String, Object> mutableCopy = new HashMap<String, Object>();
+
+                mutableCopy.putAll(currentDoc.getProperties());
+                return mutableCopy;
+            }
+
+
+        }
+
+    }
 }

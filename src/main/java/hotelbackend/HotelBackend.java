@@ -99,12 +99,35 @@ public class HotelBackend
             double nums = docalc.nextDouble();
             System.out.println("enter menu item cost");
             double num = docalc.nextDouble();
+
+            double [][] n = new double [(int)nums][(int)nums];
             //System.out.println(cal);
            // nums++;
             double cals =  nums + num;
             //numItems--;
+            double [] m = new double[(int)cals];
+            //cals++;
             System.out.println(cals);
+            cals++;
 
+
+            System.out.println("do you want to enter more items ");
+            String newnum = docalc.next();
+            if(newnum.contains("yes") || newnum.contains("Yes"))
+            {
+                System.out.println("enter menu item cost");
+                num = docalc.nextDouble();
+
+                //cals++;
+                System.out.println(cals +  num);
+                cals++;
+            }
+            else if(newnum.contains("yes") || newnum.contains("Yes"))
+            {
+
+            }
+
+            //return cals;
         }
 
 

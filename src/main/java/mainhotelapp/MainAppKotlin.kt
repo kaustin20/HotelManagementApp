@@ -159,7 +159,7 @@ class ReservationView : View()
 
             val roomNumCol = TableColumn<AvailableRooms, Int>("Room Number")
 
-            roomNumCol.setCellValueFactory { it.value.roomNumberProperty() }
+//            roomNumCol.setCellValueFactory { it.value.roomNumberProperty() }
 
 
             val durationColumn = TableColumn<AvailableRooms, String>("Duration")
@@ -206,17 +206,6 @@ class ReservationView : View()
         searchBookingBtn.setOnMouseClicked {
             val rez =  HotelBackend().bookRoom(fromBookingDatePicker.value, toBookingDatePicker.value, roomBookingTypeComboBox.value, numOfBookedRoomsComboBox.value)
             println("rez: $rez")
-
-
-
-
-
-
-
-
-
-
-
 
 
 

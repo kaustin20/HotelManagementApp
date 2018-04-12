@@ -64,8 +64,9 @@ public class Room {
         return regRoomAmenities;
     }
 
-    private static HashMap<String, Boolean> getSuiteAmenities() {
-        HashMap<String, Boolean> suiteRoomAmenities = Room.regAmenities;
+    private static HashMap<String, Boolean> getSuiteAmenities()
+    {
+        HashMap<String, Boolean> suiteRoomAmenities = Room.getRegAmenities();
 
         suiteRoomAmenities.put(amenities.cofferMaker.toString(), true);
         suiteRoomAmenities.put(amenities.stereo.toString(), true);

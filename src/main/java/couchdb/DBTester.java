@@ -94,9 +94,6 @@ public class DBTester
         System.out.println("\nprintMap4\n");
         dbClassRef.printDocAsJSON(removedDoc, 10);
 
-
-
-
         //...please see the DB.Class for further documentation.
     }
 
